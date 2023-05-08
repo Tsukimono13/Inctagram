@@ -1,5 +1,5 @@
-import {getLayout} from "@/components/Layout/Layout";
 import {NextPageWithLayout} from "@/pages/_app";
+import {getLayout} from "@/components/Layout/Layout";
 
 const Home: NextPageWithLayout = () => {
     return (
