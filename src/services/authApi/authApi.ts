@@ -1,15 +1,24 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
+export type LoginFormType = {
+    email:string
+    password:string
+}
+
+type LoginResponseType = {
+    accessToken: string
+}
+
 export const authApi = createApi({
-    reducerPath: 'api',
+    reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({ baseUrl:'https://inctagram-api-git-main-shuliakleonid.vercel.app/api/auth/' }),
     endpoints: (builder) => ({
-        signIn: builder.mutation<any, { email: string; password: string }>({
-            query: (credentials) => ({
+        signIn: builder.mutation<LoginResponseType,LoginFormType>({
+            query: (body) => ({
                 url: 'login',
                 method: 'POST',
-                body: credentials,
+                body: body,
             }),
         }),
     }),

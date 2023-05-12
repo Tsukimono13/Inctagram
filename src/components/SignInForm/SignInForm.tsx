@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import {SubmitHandler, useForm} from 'react-hook-form';
 import s from './signin.module.css'
 import {
     Box,
@@ -9,7 +9,7 @@ import {
     TextField,
 } from "@mui/material";
 import {useRouter} from "next/router";
-import {useSignInMutation} from "@/services/authApi/authApi";
+import {LoginFormType, useSignInMutation} from "@/services/authApi/authApi";
 import Link from "next/link";
 
 
@@ -32,27 +32,24 @@ export const SignInForm: React.FC = () => {
 
     const [signIn, { isLoading, isError }] = useSignInMutation();
 
-    const {register, handleSubmit, formState,reset} = form
-
-    const {errors} = formState
+    const {register, handleSubmit, formState:{errors}} = form
 
 
-    const onSubmit = async (data: FormPropsType) => {
+
+    const onSubmit:SubmitHandler<LoginFormType> = async (data) => {
 
         const email = data.email
         const password = data.password
 
         try{
             const result = await signIn({email,password}).unwrap()
-            console.log('Sign-in successful:', result);
+            console.log('Sign-in successful:', result.accesToken);
             await router.push('/')
-
         } catch (err){
             console.error('Sign-in failed:', err);
         }
 
     }
-
     return (
 
                 <Container  component={'main'} maxWidth={'xs'}  style={{backgroundColor:'#171717'}}>
@@ -83,7 +80,6 @@ export const SignInForm: React.FC = () => {
                                         },
                                     })}
                                     error={!!errors.email}
-                                    helperText={errors.email?.message}
                                     required
                                 />
                                 <TextField
@@ -99,7 +95,6 @@ export const SignInForm: React.FC = () => {
                                         },
                                     })}
                                     error={!!errors.password}
-                                    helperText={errors.password?.message}
                                     required
                                 />
                                 <Link href={'/'} style={{textDecoration:'none'}}>
