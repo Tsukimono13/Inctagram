@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import s from './signin.module.css'
 import {
@@ -11,6 +11,8 @@ import {
 import {useRouter} from "next/router";
 import {LoginFormType, useSignInMutation} from "@/services/authApi/authApi";
 import Link from "next/link";
+import {useAppSelector} from "@/hooks/useAppSelector";
+import {signedIn} from "@/features/auth/authSelectors";
 
 
 type FormPropsType = {
@@ -20,28 +22,31 @@ type FormPropsType = {
 
 export const SignInForm: React.FC = () => {
 
-
-    const form = useForm<FormPropsType>()
+    const isSignedIn = useAppSelector(signedIn)
 
     const router = useRouter()
 
+    useEffect(()=>{
+        isSignedIn && router.push('/profile')
+    },[isSignedIn])
+
     const [signIn, { isLoading, isError }] = useSignInMutation();
 
-    const {register, handleSubmit, formState:{errors}} = form
+    const {register, handleSubmit, formState:{errors,isValid},reset} = useForm<FormPropsType>({
+        mode:'onBlur'
+    })
 
 
 
     const onSubmit:SubmitHandler<LoginFormType> = async (data) => {
 
-        const email = data.email
-        const password = data.password
-
         try{
-            const result = await signIn({email,password}).unwrap()
+            const result = await signIn(data).unwrap()
             console.log('Sign-in successful:', result.accesToken);
-            await router.push('/')
         } catch (err){
-            console.error('Sign-in failed:', err);
+            console.error('Sign-in failed:', err,data);
+        }finally {
+            reset()
         }
 
     }
@@ -61,7 +66,7 @@ export const SignInForm: React.FC = () => {
                         <h1>Sign In</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <Stack spacing={2} width={400}>
-                                {isError && <div>Try Again</div>}
+                                <div> {isError && <div style={{color:'red'}}>Email or Password are incorrect</div>}</div>
                                 <TextField
                                     id="standard-basic"
                                     variant="standard"
@@ -95,7 +100,7 @@ export const SignInForm: React.FC = () => {
                                 <Link href={'/'} style={{textDecoration:'none'}}>
                                     Forgot password?
                                 </Link>
-                                <Button type="submit" variant="contained" color="primary" disabled={isLoading}>
+                                <Button type="submit" variant="contained" color="primary" disabled={isLoading || !isValid}>
                                     Sign In
                                 </Button>
                                 <Grid container>
