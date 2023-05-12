@@ -21,12 +21,7 @@ type FormPropsType = {
 export const SignInForm: React.FC = () => {
 
 
-    const form = useForm<FormPropsType>({
-        defaultValues: {
-            email: '',
-            password: '',
-        }
-    })
+    const form = useForm<FormPropsType>()
 
     const router = useRouter()
 

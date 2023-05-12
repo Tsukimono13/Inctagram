@@ -10,6 +10,12 @@ type LoginResponseType = {
     accessToken: string
 }
 
+export type UserType = {
+    userId: number
+    userName: string
+    email: string
+}
+
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({ baseUrl:'https://inctagram-api-git-main-shuliakleonid.vercel.app/api/auth/' }),
