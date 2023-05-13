@@ -14,7 +14,7 @@ const Home: NextPageWithLayout = () => {
 
     useEffect(() => {
 
-        isSignedIn ? router.push('/profile') : router.push('/auth/signIn')
+        isSignedIn ? router.push('/profile') : router.push('/signIn')
 
     }, [isSignedIn])
 

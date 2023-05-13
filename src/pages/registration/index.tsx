@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
-import s from './signin.module.css'
 import {
     Box,
     Button,
@@ -9,49 +8,50 @@ import {
     TextField,
 } from "@mui/material";
 import {useRouter} from "next/router";
-import {LoginType, useSignInMutation} from "@/services/authApi/authApi";
+import {LoginType, RegistrationType, useRegistrationMutation, useSignInMutation} from "@/services/authApi/authApi";
 import Link from "next/link";
 import {useAppSelector} from "@/hooks/useAppSelector";
-import {signedIn} from "@/features/authReducer/authSelectors";
+import {signedIn, signedUp} from "@/features/authReducer/authSelectors";
 import Image from "next/image";
 import GoodleIcon from "public/icons/google.svg"
 import GithubIcon from "public/icons/github.svg"
 
 
 type FormPropsType = {
+    userName: string;
     email: string;
     password: string;
+    passwordConfirmation: string
 };
 
-export const SignInForm: React.FC = () => {
+const RegistrationForm: React.FC = () => {
 
-    const isSignedIn = useAppSelector(signedIn)
+    const isSignedUp = useAppSelector(signedUp)
 
     const router = useRouter()
 
     useEffect(() => {
-        isSignedIn && router.push('/profile')
-    }, [isSignedIn])
+        isSignedUp && router.push('/')
+    }, [isSignedUp])
 
-    const [signIn, {isLoading, isError}] = useSignInMutation();
+    const [signUp, {isLoading, isError}] = useRegistrationMutation();
 
-    const {register, handleSubmit, formState: {errors, isValid}, reset} = useForm<FormPropsType>({
+    const {register, handleSubmit, formState: {errors, isValid}, reset, getValues, watch} = useForm<FormPropsType>({
         mode: 'onBlur'
     })
-
-    const onSubmit: SubmitHandler<LoginType> = async (data) => {
+    let password = watch("password", "");
+    const onSubmit: SubmitHandler<any> = async (data) => {
         try {
-            const result = await signIn(data).unwrap()
-            console.log('Sign-in successful:', result.accessToken);
+            const result = await signUp(data).unwrap()
+            console.log('Sign-up successful:');
         } catch (err) {
-            console.error('Sign-in failed:', err, data);
+            console.error('Sign-up failed:', err, data);
         } finally {
             reset()
         }
 
     }
     return (
-
         <Container component={'main'} maxWidth={'xs'} style={{backgroundColor: '#171717'}}>
             <Box
                 sx={{
@@ -74,6 +74,25 @@ export const SignInForm: React.FC = () => {
                         <TextField
                             id="standard-basic"
                             variant="standard"
+                            label="Username"
+                            type="text"
+                            {...register('userName', {
+                                required: "Username is required",
+                                minLength: {
+                                    value: 6,
+                                    message: 'Password must be at least 6 characters'
+                                },
+                                maxLength: {
+                                    value: 30,
+                                    message: "Password must be less then 30 characters"
+                                }
+                            })}
+                            error={!!errors.userName}
+                            required
+                        />
+                        <TextField
+                            id="standard-basic"
+                            variant="standard"
                             label="Email"
                             type="email"
                             {...register('email', {
@@ -86,6 +105,7 @@ export const SignInForm: React.FC = () => {
                             error={!!errors.email}
                             required
                         />
+                        {errors?.email && <div style={{color: "red"}}>{errors.email.message}</div>}
                         <TextField
                             id="standard-basic"
                             variant="standard"
@@ -101,11 +121,27 @@ export const SignInForm: React.FC = () => {
                             error={!!errors.password}
                             required
                         />
+                        <TextField
+                            id="standard-basic"
+                            variant="standard"
+                            label="Password confirmation"
+                            type="password"
+                            {...register('passwordConfirmation', {
+                                required: "Password is required",
+                                minLength: {
+                                    value: 8,
+                                    message: 'Password must be at least 8 characters',
+                                },
+                                validate: (value) => value === getValues("password")
+                            })}
+                            error={!!errors.passwordConfirmation}
+                            required
+                        />
                         <Link href={'/'} style={{textDecoration: 'none', color: '#BDC1C7'}}>
                             Forgot password?
                         </Link>
-                        <Button type="submit" variant="contained" color="primary" disabled={isLoading || !isValid}>
-                            Sign In
+                        <Button type="submit" variant="contained" color="primary" disabled={isLoading}>
+                            Sign Up
                         </Button>
                         <Grid container>
                             <Grid item paddingBottom={5}>
@@ -120,6 +156,6 @@ export const SignInForm: React.FC = () => {
 
     )
 };
-
+export default RegistrationForm;
 
 

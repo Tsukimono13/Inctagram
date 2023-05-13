@@ -1,10 +1,13 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 
-export type LoginFormType = {
-    email:string
-    password:string
+export type RegistrationType = {
+    userName: "string"
+    email: string
+    password: string
 }
+
+export type LoginType = Omit<RegistrationType, 'userName'>
 
 type LoginResponseType = {
     accessToken: string
@@ -18,24 +21,33 @@ export type UserType = {
 
 export const authApi = createApi({
     reducerPath: 'authApi',
-    baseQuery: fetchBaseQuery({ baseUrl:'https://inctagram-api-git-main-shuliakleonid.vercel.app/api/auth/' }),
+    baseQuery: fetchBaseQuery(
+        {baseUrl: process.env.BASE_API_URL}
+    ),
     endpoints: (builder) => ({
-        signIn: builder.mutation<LoginResponseType,LoginFormType>({
+        signIn: builder.mutation<LoginResponseType, LoginType>({
             query: (body) => ({
-                url: 'login',
+                url: 'auth/login',
                 method: 'POST',
                 body: body,
             }),
         }),
-        LogOut: builder.mutation<void,void>({
+        LogOut: builder.mutation<void, void>({
             query: () => ({
-                url: 'logout',
+                url: 'auth/logout',
                 method: 'POST',
             }),
         }),
+        registration: builder.mutation<any, RegistrationType>({
+            query: (body: RegistrationType) => ({
+                url: 'auth/registration',
+                method: 'POST',
+                body: body
+            })
+        })
     }),
 });
 
-export const { useSignInMutation,useLogOutMutation } = authApi;
+export const {useSignInMutation, useLogOutMutation, useRegistrationMutation} = authApi;
 
 
