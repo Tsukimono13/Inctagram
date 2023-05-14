@@ -14,8 +14,8 @@ import Link from "next/link";
 import {useAppSelector} from "@/hooks/useAppSelector";
 import {signedIn} from "@/features/authReducer/authSelectors";
 import Image from "next/image";
-import GoodleIcon from "public/icons/google.svg"
-import GithubIcon from "public/icons/github.svg"
+import GoodleIcon from "public/icons/Google.svg"
+import GithubIcon from "public/icons/Github.svg"
 
 
 type FormPropsType = {
@@ -48,8 +48,8 @@ export const SignInForm: React.FC = () => {
         } finally {
             reset()
         }
-
     }
+
     return (
 
         <Container component={'main'} maxWidth={'xs'} style={{backgroundColor: '#171717'}}>
@@ -65,8 +65,8 @@ export const SignInForm: React.FC = () => {
             >
                 <h1>Sign In</h1>
                 <div>
-                    <Image src={GoodleIcon} alt={'google icon'} width={36} height={36}/>
-                    <Image src={GithubIcon} alt={'github icon'} width={36} height={36}/>
+                    <Image src={GoodleIcon} alt={'google icon'}/>
+                    <Image src={GithubIcon} alt={'github icon'}/>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Stack spacing={2} width={400}>
@@ -117,7 +117,6 @@ export const SignInForm: React.FC = () => {
                 </form>
             </Box>
         </Container>
-
     )
 };
 

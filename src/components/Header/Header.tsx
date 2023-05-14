@@ -5,7 +5,7 @@ import {useLogOutMutation} from "@/services/authApi/authApi";
 
 export const Header = () => {
 
-    const [logOut]=useLogOutMutation()
+    const [logOut] = useLogOutMutation()
 
     const logOutHandler = async () => {
         await logOut()

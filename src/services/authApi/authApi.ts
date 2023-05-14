@@ -2,7 +2,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 
 export type RegistrationType = {
-    userName: "string"
+    userName: string
     email: string
     password: string
 }
@@ -22,7 +22,7 @@ export type UserType = {
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery(
-        {baseUrl: process.env.BASE_API_URL}
+        {baseUrl: 'https://inctagram-api-git-main-shuliakleonid.vercel.app/api/'}
     ),
     endpoints: (builder) => ({
         signIn: builder.mutation<LoginResponseType, LoginType>({
