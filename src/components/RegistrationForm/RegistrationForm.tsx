@@ -15,8 +15,6 @@ import {signedIn, signedUp} from "@/features/authReducer/authSelectors";
 import Image from "next/image";
 import GoodleIcon from "public/icons/Google.svg"
 import GithubIcon from "public/icons/Github.svg"
-import {getLayout} from "@/components/Layout/Layout";
-
 
 
 type FormPropsType = {
