@@ -1,7 +1,8 @@
 import React from 'react';
 import {getLayout} from "@/components/Layout/Layout";
-import CreateNewPassword from "@/components/CreateNewPassword/CreateNewPassword";
+import SendLinkAgain from "@/components/SendLinkAgain/SendLinkAgain";
 
-const Index = () => <CreateNewPassword/>
+const Index = () => <SendLinkAgain/>
+
 Index.getLayout=getLayout
 export default Index;
