@@ -101,7 +101,7 @@ export const SignInForm: React.FC = () => {
                             error={!!errors.password}
                             required
                         />
-                        <Link href={'/'} style={{textDecoration: 'none', color: '#BDC1C7'}}>
+                        <Link href={'/recovery-password'} style={{textDecoration: 'none', color: '#BDC1C7'}}>
                             Forgot password?
                         </Link>
                         <Button type="submit" variant="contained" color="primary" disabled={isLoading || !isValid}>
