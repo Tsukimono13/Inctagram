@@ -11,8 +11,8 @@ import {
 import {useRouter} from "next/router";
 import {LoginType, useSignInMutation} from "@/services/authApi/authApi";
 import Link from "next/link";
-import {useAppSelector} from "@/hooks/useAppSelector";
-import {signedIn} from "@/features/authReducer/authSelectors";
+// import {useAppSelector} from "@/hooks/useAppSelector";
+// import {signedIn} from "@/features/authReducer/authSelectors";
 import Image from "next/image";
 import GoodleIcon from "public/icons/Google.svg"
 import GithubIcon from "public/icons/Github.svg"
