@@ -148,7 +148,7 @@ const RegistrationForm: React.FC = () => {
                                 Do you have an account?
                                 <Grid container direction="column"
                                       alignItems="center">
-                                    <Link href={'registration'} style={{textDecoration: 'none'}}>Sign Up</Link>
+                                    <Link href={'signIn'} style={{textDecoration: 'none'}}>Sign In</Link>
                                 </Grid>
                             </Grid>
                         </Grid>
