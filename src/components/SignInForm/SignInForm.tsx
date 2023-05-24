@@ -24,9 +24,7 @@ export const SignInForm: React.FC = () => {
 
     const [showPassword,setShowPassword] = useState<boolean>(false)
 
-
     const router = useRouter()
-
 
     const [signIn, {isLoading, isError}] = useSignInMutation();
 
@@ -37,8 +35,10 @@ export const SignInForm: React.FC = () => {
     const onSubmit: SubmitHandler<LoginType> = async (data) => {
         try {
             const result = await signIn(data).unwrap()
-            console.log('Sign-in successful:', result.accessToken);
+
             if(result.accessToken){
+                localStorage.setItem('token', result.accessToken)
+
                 return router.push('/profile')
             }
         } catch (err) {
