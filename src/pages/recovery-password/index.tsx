@@ -5,4 +5,5 @@ import RecoveryPassword from "@/components/RecoveryPassword/RecoveryPassword";
 const Index = () => <RecoveryPassword/>
 
 Index.getLayout=getLayout
+
 export default Index;

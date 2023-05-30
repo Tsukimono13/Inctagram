@@ -1,6 +1,9 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
-
+export type RecoveryPassportType={
+    email: string
+    recaptcha: string
+}
 export type RegistrationType = {
     userName: string
     email: string

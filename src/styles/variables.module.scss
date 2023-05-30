@@ -1,0 +1,12 @@
+$primary-color: #397DF6;
+$light-color: #BDC1C7;
+$white-color: #FFFFFF;
+$error-color: #CC1439;
+
+:export {
+  primaryColor: $primary-color;
+  lightColor:$light-color;
+  whiteColor: $white-color;
+  errorColor: $error-color;
+}
+
