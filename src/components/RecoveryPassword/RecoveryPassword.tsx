@@ -9,7 +9,6 @@ import TitleForAuth from "@/components/RecoveryPassword/TitleForAuth/TitleForAut
 import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
 import {ContainerForAuth} from "@/components/RecoveryPassword/ContainerForAuth/ContainerForAuth";
 import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
-import CustomizedInputs from "@/components/RecoveryPassword/InputCss";
 
 
 const RecoveryPassword = () => {
@@ -78,7 +77,6 @@ const RecoveryPassword = () => {
         Back to Sign In
       </Link>
       <Recaptcha onChange={onChange}/>
-      <CustomizedInputs/>
     </ContainerForAuth>
   )
 };
