@@ -3,24 +3,27 @@ import TitleForAuth from "@/components/RecoveryPassword/TitleForAuth/TitleForAut
 import s from "./SentEmail.module.scss";
 import CloseIcon from '@mui/icons-material/Close';
 import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
-import variables from '../../styles/variables.module.scss';
+import variables from '../../../styles/variables.module.scss';
 import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import {useRouter} from "next/router";
 
 const SentEmail = () => {
+  const router = useRouter()
+  const email = (router.query?.email)
 
   return (
     <div className={s.main}>
       <div className={s.title}>
         <TitleForAuth marginBottom={'0px'} text={'Email sent'}/>
         <CloseIcon/>
-        </div>
+      </div>
       <div className={s.subTitle}>
-        <TextForAuth text={'We have sent a link to confirm your email to epam@epam.com'}
+        <TextForAuth text={`We have sent a link to confirm your email to ${email}`}
                      color={variables.whiteColor}
                      marginBottom={'18px'}
                      fontSize={'16px'}
-                     />
-        <div style={{marginBottom: '6px', textAlign:'end'}}>
+        />
+        <div style={{marginBottom: '6px', textAlign: 'end'}}>
           <ButtonBlue
             disabled={false}
             title={'OK'}

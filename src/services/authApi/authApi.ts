@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
-export type RecoveryPassportType={
+export type RecoveryPasswordType={
     email: string
     recaptcha: string
 }
@@ -57,6 +57,13 @@ export const authApi = createApi({
                 body: body
             })
         }),
+        forgotPassword: builder.mutation<any, RecoveryPasswordType>({
+            query: (body: RecoveryPasswordType) => ({
+                url: 'auth/password-recovery',
+                method: 'POST',
+                body: body
+            })
+        }),
         user:builder.query({
             query:() => ({
                 url:'auth/me',
@@ -66,6 +73,6 @@ export const authApi = createApi({
     }),
 });
 
-export const {useSignInMutation, useLogOutMutation, useRegistrationMutation,useUserQuery} = authApi;
+export const {useSignInMutation, useLogOutMutation, useRegistrationMutation,useUserQuery,useForgotPasswordMutation} = authApi;
 
 

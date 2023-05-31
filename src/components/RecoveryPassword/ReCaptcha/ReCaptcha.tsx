@@ -5,25 +5,23 @@ import s from './ReCaptcha.module.scss'
 
 interface Props {
   onChange: (token: string) => void;
+  tokenError:string
 }
 
 // const secretKey = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY as string;
 
-export const Recaptcha = ({onChange}: Props) => {
+export const Recaptcha = ({onChange,tokenError}: Props) => {
   const GoogleKey = '6LeY2y0mAAAAANwI_paCWfoksCgBm1n2z9J0nwNQ'
-  const errorText = 'Please verify that you are not a robot'
+
   const captchaExpiredText = 'Verification expired. Check the checkbox again.'
 
-  const [tokenError, setTokenError] = useState<string>('')
+
 
   const handleRecaptchaChange = (token: string | null) => {
     if (token) {
-      setTokenError('')
       onChange(token);
       return
     }
-    setTokenError(errorText)
-
   };
   const finalClass = tokenError ?  s.mainError:s.main
 
@@ -31,9 +29,6 @@ export const Recaptcha = ({onChange}: Props) => {
     <div className={finalClass}>
 
       <div className={s.recaptcha}>
-        <div className={s.error}>
-          {/*{tokenError && <span >Try again</span>}*/}
-        </div>
         <ReCAPTCHA
           sitekey={GoogleKey}
           onChange={handleRecaptchaChange}

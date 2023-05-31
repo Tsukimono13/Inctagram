@@ -6,7 +6,7 @@ import {TextField} from "@mui/material";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import s from './CreateNewPassword.module.scss'
 import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
-import variables from '../../styles/variables.module.scss';
+import variables from '../../../styles/variables.module.scss';
 import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
 
 const CreateNewPassword = () => {

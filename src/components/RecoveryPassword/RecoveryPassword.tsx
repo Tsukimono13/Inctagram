@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
-import { TextField} from "@mui/material";
+import {TextField} from "@mui/material";
 import Link from "next/link";
 import s from './RecoveryPassword.module.scss'
 import variables from '../../styles/variables.module.scss';
@@ -9,25 +9,42 @@ import TitleForAuth from "@/components/RecoveryPassword/TitleForAuth/TitleForAut
 import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
 import {ContainerForAuth} from "@/components/RecoveryPassword/ContainerForAuth/ContainerForAuth";
 import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import {useForgotPasswordMutation} from "@/services/authApi/authApi";
+import {useRouter} from "next/router";
 
 
 const RecoveryPassword = () => {
+  const errorText = 'Please verify that you are not a robot'
   const [token, setToken] = useState<string>('')
-
+  const [tokenError, setTokenError] = useState<string>('')
+  const router = useRouter()
+  const [forgotPassword, {isLoading, isError}] = useForgotPasswordMutation()
+  console.log(isError)
 
   function onChange(token: string) {
     console.log(token)
+    setToken(token)
   }
 
   const {register, formState: {errors, isDirty, isValid}, handleSubmit} = useForm<{ email: string }>({
-    defaultValues: {email: ""}, mode: "onChange"
+    defaultValues: {email: ""}, mode: "onBlur"
   })
 
-  const onSubmit = (data: { email: string }) => {
+  const onSubmit = async (data: { email: string }) => {
     if (token) {
-      console.log(data)
-    } else {
+      setTokenError('')
+      try {
+        const res = await forgotPassword({email: data.email, recaptcha: token})
+        return router.push({
+          pathname: '/sent-email',
+          query: { email: data.email },
+        })
+      } catch (err) {
+        console.log(err)
+      }
 
+    } else {
+      setTokenError(errorText)
     }
   }
 
@@ -76,7 +93,7 @@ const RecoveryPassword = () => {
       <Link href={'/signIn'} className={s.link}>
         Back to Sign In
       </Link>
-      <Recaptcha onChange={onChange}/>
+      <Recaptcha onChange={onChange} tokenError={tokenError}/>
     </ContainerForAuth>
   )
 };

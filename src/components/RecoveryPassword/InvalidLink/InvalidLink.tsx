@@ -5,7 +5,7 @@ import variables from "@/styles/variables.module.scss";
 import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
 import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
 import Image from "next/image";
-import resendImg from '../../../src/assets/img/auth/recent-link.png'
+import resendImg from '../../../assets/img/auth/recent-link.png'
 const InvalidLink = () => {
     return (
       <ContainerForAuth>
