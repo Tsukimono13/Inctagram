@@ -18,7 +18,7 @@ const SendLinkAgain = () => {
   }
 
   const {register, formState: {errors, isDirty, isValid}, handleSubmit} = useForm<{ email: string }>({
-    defaultValues: {email: ""}, mode: "onChange"
+    defaultValues: {email: ""}, mode: "onBlur"
   })
 
   const onSubmit = (data: { email: string }) => {
@@ -47,7 +47,7 @@ const SendLinkAgain = () => {
           fullWidth
           variant="standard"
           id="standard-basic"
-          label="Email"
+          label="Index"
           name="email"
           error={!!errors.email}
           InputLabelProps={{className: s.textFieldLabel}}

@@ -4,6 +4,10 @@ export type RecoveryPasswordType={
     email: string
     recaptcha: string
 }
+export type NewPasswordType={
+    newPassword: string,
+    recoveryCode: string
+}
 export type RegistrationType = {
     userName: string
     email: string
@@ -64,6 +68,20 @@ export const authApi = createApi({
                 body: body
             })
         }),
+        createNewPassword: builder.mutation<any, NewPasswordType>({
+            query: (body: NewPasswordType) => ({
+                url: 'auth/new-password',
+                method: 'POST',
+                body: body
+            })
+        }),
+        checkRecoveryCode: builder.mutation<any, {recoveryCode:string}>({
+            query: (body: NewPasswordType) => ({
+                url: 'auth/check-recovery-code',
+                method: 'POST',
+                body: body
+            })
+        }),
         user:builder.query({
             query:() => ({
                 url:'auth/me',
@@ -73,6 +91,7 @@ export const authApi = createApi({
     }),
 });
 
-export const {useSignInMutation, useLogOutMutation, useRegistrationMutation,useUserQuery,useForgotPasswordMutation} = authApi;
+export const {useSignInMutation, useLogOutMutation, useRegistrationMutation,useUserQuery,
+    useForgotPasswordMutation,useCreateNewPasswordMutation,useCheckRecoveryCodeMutation} = authApi;
 
 

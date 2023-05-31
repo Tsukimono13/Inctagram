@@ -22,7 +22,6 @@ const RecoveryPassword = () => {
   console.log(isError)
 
   function onChange(token: string) {
-    console.log(token)
     setToken(token)
   }
 
@@ -30,72 +29,68 @@ const RecoveryPassword = () => {
     defaultValues: {email: ""}, mode: "onBlur"
   })
 
-  const onSubmit = async (data: { email: string }) => {
+  const onSubmit = (data: { email: string }) => {
     if (token) {
       setTokenError('')
-      try {
-        const res = await forgotPassword({email: data.email, recaptcha: token})
-        return router.push({
-          pathname: '/sent-email',
-          query: { email: data.email },
-        })
-      } catch (err) {
-        console.log(err)
-      }
-
+      forgotPassword({email: data.email, recaptcha: token})
+        .unwrap()
+        .then(() => router.push({pathname: '/sent-email', query: {email: data.email},}))
+        .catch((err) => console.log(err))
     } else {
       setTokenError(errorText)
     }
   }
 
 
-  return (
-    <ContainerForAuth>
-      <TitleForAuth marginBottom={'19px'} text={'Forgot password'}/>
-      <form onSubmit={handleSubmit(onSubmit)}>
 
-        <TextField
-          {...register("email", {
-            required: "Required field",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              message: "Invalid email.",
-            },
-          })}
-          margin={"none"}
-          fullWidth
-          variant="standard"
-          id="standard-basic"
-          label="Email"
-          name="email"
-          error={!!errors.email}
-          InputLabelProps={{className: s.textFieldLabel}}
-          InputProps={{className: s.input}}
+return (
+  <ContainerForAuth>
+    <TitleForAuth marginBottom={'19px'} text={'Forgot password'}/>
+    <form onSubmit={handleSubmit(onSubmit)}>
+
+      <TextField
+        {...register("email", {
+          required: "Required field",
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+            message: "Invalid email.",
+          },
+        })}
+        margin={"none"}
+        fullWidth
+        variant="standard"
+        id="standard-basic"
+        label="Email"
+        name="email"
+        error={!!errors.email}
+        InputLabelProps={{className: s.textFieldLabel}}
+        InputProps={{className: s.input}}
+      />
+      <div className={s.error}>{errors?.email && <p>{errors?.email?.message || "Error"}</p>}</div>
+      <TextForAuth
+        fontSize={'14px'}
+        color={variables.lightColor}
+        marginBottom={'29px'}
+        text={'Enter your email address and we will send you further instructions'}/>
+      <div style={{marginBottom: '30px'}}>
+        <ButtonBlue
+          disabled={false}
+          title={'Send Link'}
+          width={'100%'}
+          type={'submit'}
         />
-        <div className={s.error}>{errors?.email && <p>{errors?.email?.message || "Error"}</p>}</div>
-        <TextForAuth
-          fontSize={'14px'}
-          color={variables.lightColor}
-          marginBottom={'29px'}
-          text={'Enter your email address and we will send you further instructions'}/>
-        <div style={{marginBottom: '30px'}}>
-          <ButtonBlue
-            disabled={false}
-            title={'Send Link'}
-            width={'100%'}
-            type={'submit'}
-          />
-        </div>
+      </div>
 
 
-      </form>
+    </form>
 
-      <Link href={'/signIn'} className={s.link}>
-        Back to Sign In
-      </Link>
-      <Recaptcha onChange={onChange} tokenError={tokenError}/>
-    </ContainerForAuth>
-  )
-};
+    <Link href={'/signIn'} className={s.link}>
+      Back to Sign In
+    </Link>
+    <Recaptcha onChange={onChange} tokenError={tokenError}/>
+  </ContainerForAuth>
+)
+}
+;
 
 export default RecoveryPassword;

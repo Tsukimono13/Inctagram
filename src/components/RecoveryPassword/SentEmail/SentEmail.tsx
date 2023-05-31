@@ -17,7 +17,7 @@ const SentEmail = () => {
     <div className={s.main}>
       <div className={s.title}>
         <TitleForAuth marginBottom={'0px'} text={'Email sent'}/>
-        <CloseIcon onClick={onClickHandler}/>
+        <CloseIcon onClick={onClickHandler} style={{cursor:'pointer'}}/>
       </div>
       <div className={s.subTitle}>
         <TextForAuth text={`We have sent a link to confirm your email to ${email}`}

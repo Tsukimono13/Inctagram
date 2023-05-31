@@ -71,7 +71,7 @@ const RegistrationForm: React.FC = () => {
                 </Grid>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Stack spacing={2} width={400}>
-                        <div> {isError && <div style={{color: 'red'}}>Email or Password are incorrect</div>}</div>
+                        <div> {isError && <div style={{color: 'red'}}>Index or Password are incorrect</div>}</div>
                         <TextField
                             id="standard-basic"
                             variant="standard"
@@ -94,10 +94,10 @@ const RegistrationForm: React.FC = () => {
                         <TextField
                             id="standard-basic"
                             variant="standard"
-                            label="Email"
+                            label="Index"
                             type="email"
                             {...register('email', {
-                                required: "Email is required",
+                                required: "Index is required",
                                 pattern: {
                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                                     message: 'Invalid email address',
