@@ -25,7 +25,16 @@ export type UserType = {
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery(
-        {baseUrl: 'https://inctagram-api-git-main-shuliakleonid.vercel.app/api/'}
+        {
+            baseUrl: 'https://inctagram-api-git-main-shuliakleonid.vercel.app/api/',
+            prepareHeaders:(headers) => {
+                const token = localStorage.getItem('token')
+
+                if(token) return headers.set('Authorization', `Bearer ${token}`)
+
+                return headers
+            }
+        }
     ),
     endpoints: (builder) => ({
         signIn: builder.mutation<LoginResponseType, LoginType>({
@@ -47,10 +56,16 @@ export const authApi = createApi({
                 method: 'POST',
                 body: body
             })
+        }),
+        user:builder.query({
+            query:() => ({
+                url:'auth/me',
+                method:'GET'
+            })
         })
     }),
 });
 
-export const {useSignInMutation, useLogOutMutation, useRegistrationMutation} = authApi;
+export const {useSignInMutation, useLogOutMutation, useRegistrationMutation,useUserQuery} = authApi;
 
 
