@@ -19,7 +19,6 @@ const RecoveryPassword = () => {
     const [tokenError, setTokenError] = useState<string>('')
     const router = useRouter()
     const [forgotPassword, {isLoading, isError}] = useForgotPasswordMutation()
-    console.log(isError)
 
     function onChange(token: string) {
       setToken(token)

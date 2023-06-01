@@ -18,7 +18,7 @@ const CreateNewPassword = () => {
   const router = useRouter()
   const [createNewPassword, {isLoading, isError}] = useCreateNewPasswordMutation()
 
-
+  console.log(isError)
   const {register, watch, formState: {errors, isDirty, isValid}, handleSubmit}
     = useForm<{ password: string, confirm_password: string }>({
     defaultValues: {
@@ -44,7 +44,7 @@ const CreateNewPassword = () => {
       })
 
   }
-  console.log(errors.password)
+
   return (
     <ContainerForAuth border={'1px solid #333333'} background={'#171717'}>
       <TitleForAuth marginBottom={'35px'} text={'Create New Password'}/>
