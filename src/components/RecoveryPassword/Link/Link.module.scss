@@ -1,0 +1,18 @@
+.link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #397DF6;
+  margin-bottom: 30px;
+  font-weight: 600;
+  padding: 6px 10px;
+  &:hover {
+    color: #73A5FF;
+  }
+  &:active {
+    color: #2F68CC;
+  }
+  &:disabled {
+    color: #234E99;
+  }
+}

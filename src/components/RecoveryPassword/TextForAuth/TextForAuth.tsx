@@ -6,10 +6,11 @@ type Props = {
   color: string
   marginBottom: string
   fontSize: string
-
+  textAlign?:'center'|'left'|'right'
 }
-const TextForAuth: FC<Props> = ({marginBottom, color, fontSize, text,}) => {
+const TextForAuth: FC<Props> = ({marginBottom, color, fontSize, text,textAlign}) => {
   const style = {
+    textAlign:textAlign,
     fontWeight: '400',
     lineHeight: '24px',
     color: color,

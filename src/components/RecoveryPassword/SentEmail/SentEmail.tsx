@@ -34,7 +34,6 @@ const SentEmail = () => {
             type={'button'}
           />
         </div>
-
       </div>
     </div>
 

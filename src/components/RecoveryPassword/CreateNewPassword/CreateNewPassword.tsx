@@ -25,7 +25,7 @@ const CreateNewPassword = () => {
       password: "",
       confirm_password: "",
     },
-    mode: "onBlur",
+    mode: "onTouched" || "onBlur",
   })
   const changeType = (type: string, setType: (value: string) => void) => {
     if (type === "password") setType("text")
@@ -44,15 +44,15 @@ const CreateNewPassword = () => {
       })
 
   }
-
+  console.log(errors.password)
   return (
-    <ContainerForAuth>
+    <ContainerForAuth border={'1px solid #333333'} background={'#171717'}>
       <TitleForAuth marginBottom={'35px'} text={'Create New Password'}/>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={s.password}>
           <TextField
             {...register("password", {
-              required: true,
+              required: "Required field",
               minLength: {
                 value: 8,
                 message: "Min length 8 symbols",
@@ -83,7 +83,7 @@ const CreateNewPassword = () => {
         <div className={s.password}>
           <TextField
             {...register("confirm_password", {
-              required: true,
+              required: "Required field",
               validate: (val: string) => {
                 if (watch("password") != val) {
                   return "The password must match the new password"
@@ -107,7 +107,6 @@ const CreateNewPassword = () => {
           <div className={s.error}>{errors?.confirm_password &&
               <p>{errors?.confirm_password?.message || "Error"}</p>}</div>
         </div>
-
         <TextForAuth text={'Your password must be between 6 and 20 characters'}
                      color={variables.lightColor}
                      marginBottom={'41px'}
@@ -115,7 +114,7 @@ const CreateNewPassword = () => {
         />
         <div style={{marginBottom: '12px'}}>
           <ButtonBlue
-            disabled={!isValid || !isDirty}
+            disabled={!isValid || !isDirty || isLoading}
             title={'Create New Password'}
             width={'100%'}
             type={'submit'}

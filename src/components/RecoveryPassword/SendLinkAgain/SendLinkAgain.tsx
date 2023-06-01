@@ -5,9 +5,9 @@ import s from "@/components/RecoveryPassword/RecoveryPassword.module.scss";
 import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
 import variables from "@/styles/variables.module.scss";
 import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
-import Link from "next/link";
 import {ContainerForAuth} from "@/components/RecoveryPassword/ContainerForAuth/ContainerForAuth";
 import {useForm} from "react-hook-form";
+import CustomLink from "@/components/RecoveryPassword/Link/Link";
 
 const SendLinkAgain = () => {
   const [token, setToken] = useState<string>('')
@@ -31,7 +31,7 @@ const SendLinkAgain = () => {
 
 
   return (
-    <ContainerForAuth>
+    <ContainerForAuth border={'1px solid #333333'} background={'#171717'}>
       <TitleForAuth marginBottom={'19px'} text={'Forgot password'}/>
       <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -75,9 +75,8 @@ const SendLinkAgain = () => {
           />
         </div>
       </form>
-      <Link href={'/signIn'} className={s.link}>
-        Back to Sign In
-      </Link>
+      <CustomLink title={'Back to Sign In'} path={'/signIn'}/>
+
     </ContainerForAuth>
   )
 };

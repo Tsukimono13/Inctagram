@@ -1,5 +1,4 @@
 import ReCAPTCHA from "react-google-recaptcha"
-import {useState} from "react";
 import s from './ReCaptcha.module.scss'
 
 
@@ -13,10 +12,6 @@ interface Props {
 export const Recaptcha = ({onChange,tokenError}: Props) => {
   const GoogleKey = '6LeY2y0mAAAAANwI_paCWfoksCgBm1n2z9J0nwNQ'
 
-  const captchaExpiredText = 'Verification expired. Check the checkbox again.'
-
-
-
   const handleRecaptchaChange = (token: string | null) => {
     if (token) {
       onChange(token);
@@ -27,7 +22,6 @@ export const Recaptcha = ({onChange,tokenError}: Props) => {
 
   return (
     <div className={finalClass}>
-
       <div className={s.recaptcha}>
         <ReCAPTCHA
           sitekey={GoogleKey}
