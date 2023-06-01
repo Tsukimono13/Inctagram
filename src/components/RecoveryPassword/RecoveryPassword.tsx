@@ -62,6 +62,7 @@ const RecoveryPassword = () => {
             error={!!errors.email}
             InputLabelProps={{className: s.textFieldLabel}}
             InputProps={{className: s.input}}
+
           />
           <div className={s.error}>{errors?.email && <p>{errors?.email?.message || "Error"}</p>}</div>
           <TextForAuth
