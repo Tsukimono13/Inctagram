@@ -1,6 +1,7 @@
 import s from './header.module.css'
 import {Button} from "@mui/material"
 import {useLogOutMutation} from "@/services/authApi/authApi";
+import Link from "next/link";
 
 
 export const Header = () => {
@@ -13,7 +14,7 @@ export const Header = () => {
 
     return (
         <div className={s.header}>
-            <h2 className={s.title}>Inctagram</h2>
+            <Link href={'/'}><h2 className={s.title}>Inctagram</h2></Link>
             <Button color="inherit" onClick={logOutHandler}>Log Out</Button>
         </div>
     )

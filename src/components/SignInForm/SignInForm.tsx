@@ -130,7 +130,7 @@ export const SignInForm: React.FC = () => {
                             />
                         </FormControl>
 
-                        <Link href={'/'} style={{
+                        <Link href={'recovery-password'} style={{
                             textDecoration: 'none',
                             color: '#BDC1C7',
                             marginTop: '70px',
