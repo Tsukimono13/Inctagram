@@ -20,6 +20,11 @@ type LoginResponseType = {
     accessToken: string
 }
 
+type RegistrationConfirmation = {
+    confirmationCode: string
+}
+
+
 export type UserType = {
     userId: number
     userName: string
@@ -61,6 +66,14 @@ export const authApi = createApi({
                 body: body
             })
         }),
+        registrationConfirmation: builder.mutation<any,RegistrationConfirmation>({
+            query: (body:RegistrationConfirmation) => ({
+                url:'auth/registration-confirmation',
+                method:'POST',
+                body
+            })
+
+        }),
         forgotPassword: builder.mutation<any, RecoveryPasswordType>({
             query: (body: RecoveryPasswordType) => ({
                 url: 'auth/password-recovery',
@@ -92,6 +105,6 @@ export const authApi = createApi({
 });
 
 export const {useSignInMutation, useLogOutMutation, useRegistrationMutation, useUserQuery,
-    useForgotPasswordMutation,useCreateNewPasswordMutation,useCheckRecoveryCodeMutation} = authApi;
+    useForgotPasswordMutation,useCreateNewPasswordMutation,useCheckRecoveryCodeMutation,useRegistrationConfirmationMutation} = authApi;
 
 
