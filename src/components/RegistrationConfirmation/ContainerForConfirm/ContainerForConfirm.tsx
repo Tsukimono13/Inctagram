@@ -1,21 +1,19 @@
-import {FC, ReactNode} from "react";
+import {FC, PropsWithChildren} from "react";
 
-type Props = {
-    children: ReactNode
-}
+export const ContainerForConfirm: FC<PropsWithChildren> = ({children}) => {
 
-export const ContainerForConfirm: FC<Props> = ({children}) => {
-    const style = {
-        height: '80' + 'vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        gap: '35px',
-    }
     return (
         <div style={style}>
             {children}
         </div>
     );
+}
+
+const style = {
+    height: '80' + 'vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    gap: '35px',
 }

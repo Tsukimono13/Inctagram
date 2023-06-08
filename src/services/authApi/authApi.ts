@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import {settings} from "@/settings";
 
 export type RecoveryPasswordType={
     email: string
@@ -35,7 +36,7 @@ export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery(
         {
-            baseUrl: 'https://inctagram-api-git-main-shuliakleonid.vercel.app/api/',
+            baseUrl: settings.baseUrl,
             prepareHeaders:(headers) => {
                 const token = localStorage.getItem('token')
 

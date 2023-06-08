@@ -15,3 +15,4 @@ export const Layout: NextPage<PropsWithChildren> = (props) => {
 }
 
 export const getLayout = (page: ReactElement) =>  <Layout>{page}</Layout>
+export type GetLayoutType = typeof getLayout;
