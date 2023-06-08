@@ -15,6 +15,7 @@ import GithubIcon from "public/icons/Github.svg"
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 
 
+
 type FormPropsType = {
     email: string;
     password: string;
@@ -57,11 +58,11 @@ export const SignInForm: React.FC = () => {
 
     return (
 
-        <Container component={'main'} maxWidth={'xs'} style={{backgroundColor: '#171717'}}>
+        <Container component={'main'} maxWidth={'xs'}  style={{backgroundColor: "#171717", marginTop: '36px'}}>
             <Box
                 sx={{
                     marginTop: 8,
-                    height: '70vh',
+                    minHeight: "516px",
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -72,7 +73,10 @@ export const SignInForm: React.FC = () => {
                 <h1>Sign In</h1>
                 <Grid container
                       alignItems="center"
-                      justifyContent="space-evenly">
+                      justifyContent="center"
+                      gap="60px"
+                      style={{ marginTop: '13px' }}
+                >
                     <Image src={GoogleIcon} alt={'google icon'}/>
                     <Image src={GithubIcon} alt={'github icon'}/>
                 </Grid>
