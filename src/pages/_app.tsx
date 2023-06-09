@@ -1,6 +1,5 @@
 import '@/styles/globals.css'
 import type {AppProps} from 'next/app'
-import {ReactElement, ReactNode} from "react";
 import {NextPage} from "next";
 import {Provider} from "react-redux";
 import {store} from "@/services/store";
