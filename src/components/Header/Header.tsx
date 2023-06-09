@@ -14,8 +14,10 @@ export const Header = () => {
 
     const router = useRouter()
 
-    const logOut = () => {
+    const [logOut] = useLogOutMutation()
 
+    const logOutHandler = async () => {
+        await logOut()
     }
 
     useEffect(() => {
@@ -28,7 +30,7 @@ export const Header = () => {
     return (
         <div className={s.header}>
             <Link href={'/'}><h2 className={s.title}>Inctagram</h2></Link>
-            {!isSignedIn? '' :<Link href={'/signIn'}><h2 className={s.logOut} onClick={logOut}>[→ Log Out</h2></Link>}
+            {!isSignedIn ? '' : <Link href={'/signIn'}><h2 className={s.logOut} onClick={logOutHandler}>[→ Log Out</h2></Link>}
         </div>
     )
 }
