@@ -40,6 +40,7 @@ export const authApi = createApi({
             prepareHeaders:(headers) => {
                 const token = localStorage.getItem('token')
 
+
                 if(token) return headers.set('Authorization', `Bearer ${token}`)
 
                 return headers
@@ -96,7 +97,7 @@ export const authApi = createApi({
                 body: body
             })
         }),
-        user:builder.query({
+        user:builder.query<UserType, void>({
             query:() => ({
                 url:'auth/me',
                 method:'GET'
