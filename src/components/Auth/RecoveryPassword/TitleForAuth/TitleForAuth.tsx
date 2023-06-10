@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import variables from '../../../styles/variables.module.scss';
+import variables from 'src/styles/variables.module.scss';
 
 type Props = {
   marginBottom: string

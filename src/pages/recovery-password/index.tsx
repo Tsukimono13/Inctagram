@@ -1,6 +1,6 @@
 import React from 'react';
 import {getLayout} from "@/components/Layout/Layout";
-import RecoveryPassword from "@/components/RecoveryPassword/RecoveryPassword";
+import RecoveryPassword from "@/components/Auth/RecoveryPassword/RecoveryPassword";
 
 const Index = () => <RecoveryPassword/>
 

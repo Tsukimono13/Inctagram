@@ -1,5 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {UserType} from "@/services/authApi/authApi";
+import {createSlice} from "@reduxjs/toolkit";
 
 
 const initialState = {
