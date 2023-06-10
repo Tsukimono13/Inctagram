@@ -18,6 +18,7 @@ export const Header = () => {
 
     const logOutHandler = async () => {
         await logOut()
+        localStorage.removeItem('token')
     }
 
     useEffect(() => {
