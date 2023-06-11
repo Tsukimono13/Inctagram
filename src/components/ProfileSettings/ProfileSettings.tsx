@@ -8,11 +8,7 @@ import {DemoContainer} from '@mui/x-date-pickers/internals/demo';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {DateField} from "@mui/x-date-pickers";
-import {Button, Stack, TextField} from "@mui/material";
-
-
-import {useLogOutMutation} from "@/services/authApi/authApi";
-import {useEffect} from "react";
+import {Button, FormControl, Stack, TextField} from "@mui/material";
 import Link from "next/link";
 
 type FormData = {
@@ -26,26 +22,23 @@ export const ProfileSettings = () => {
     const isSignedIn = useAppSelector(signedIn)
     const router = useRouter()
     const {register, setValue, handleSubmit, formState: {errors}} = useForm<FormData>({
+        mode:"onTouched" || "onBlur"|| "onChange",
         defaultValues: {
             userName: '',
-            firstName: 'string',
-            lastName: 'string',
-            MUIPicker: new Date("2020-08-01T00:00:00")
+            firstName: '',
+            lastName: '',
+            MUIPicker: new Date()
         }
     });
-    const onSubmit = handleSubmit(data => console.log(data));
+    // const onSubmit = handleSubmit(data => console.log(data))
+    const onSubmit =(data:FormData)=>{
+        alert(JSON.stringify(data))
+    }
+
 
     // if(!isSignedIn){
-    //   router.replace('/singIn')
+    //   router.push('/singIn')
     // }
-
-    // useEffect(() => {
-    //
-    //     isSignedIn && router.push('/signIn')
-    //
-    // }, [isSignedIn])
-
-
     return (
         <div className={s.container}>
             <div className={s.settingOntions}>
@@ -60,41 +53,38 @@ export const ProfileSettings = () => {
                     <button>Add a profile Photo</button>
                 </div>
                 <div className={s.UserInformation}>
-                    <form  onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit}>
+                        <FormControl>
+                            <Stack spacing={2} width={600}>
+                                <TextField
+                                    id="userName"
+                                    label="Username"
+                                    variant="standard"
+                                    {...register("userName", {
+                                        required: {value: true, message: 'This field is required'},
+                                        minLength: {value: 6, message: 'Username cannot have less than 6 characters'},
+                                        maxLength: {value: 20, message: 'Username cannot exceed 20 characters'},
+                                    })} />
 
-                        <Stack>
-                            <TextField
-                                id="userName"
-                                label="Username"
-                                multiline
-                                rows={4}
-                                defaultValue="Default Value"
-                                variant="standard"
-                            {...register("userName", {
-                                required: {value:true,message:'This field is required'},
-                                minLength: {value:6,message:'Username cannot have less than 6 characters'},
-                                maxLength: {value:20,message:'Username cannot exceed 20 characters'},
-                            })} />
-
-
-                            <label>First Name</label>
-                            <input {...register("firstName")} />
-                            <label>Last Name</label>
-                            <input {...register("lastName")} />
-                            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DemoContainer components={['DateField']}>
-                                    <DateField  label="Basic date field"/>
-                                </DemoContainer>
-                            </LocalizationProvider>
-                            <Button
-                                type="submit"
-                                onClick={() => {
-                                    setValue("lastName", "luo")
-                                }}
-                            >
-                                Save Changes
-                            </Button>
-                        </Stack>
+                                <label>First Name</label>
+                                <input {...register("firstName")} />
+                                <label>Last Name</label>
+                                <input  {...register("lastName")} />
+                                {/*<LocalizationProvider dateAdapter={AdapterDayjs}>*/}
+                                {/*    <DemoContainer components={['DateField']}>*/}
+                                {/*        <DateField  label="Basic date field"/>*/}
+                                {/*    </DemoContainer>*/}
+                                {/*</LocalizationProvider>*/}
+                                <Button
+                                    type="submit"
+                                    onClick={() => {
+                                        setValue("lastName", "luo")
+                                    }}
+                                >
+                                    Save Changes
+                                </Button>
+                            </Stack>
+                        </FormControl>
                     </form>
                 </div>
             </div>

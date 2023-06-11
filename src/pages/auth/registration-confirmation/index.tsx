@@ -27,7 +27,7 @@ const RegistrationConfirmation = () => {
             <h1>Congratulations !</h1>
             <h2>Your email has been confirmed</h2>
 
-            <ButtonBlue disabled={false} title={'Sign In'} width={185} callback={() => router.push('/signIn')}/>
+            <ButtonBlue disabled={false} title={'Sign In'} width={'185'} callback={() => router.push('/signIn')}/>
             <Image src={regConfirmImg} alt={'regConfirmImg'}/>
         </ContainerForConfirm>
 
