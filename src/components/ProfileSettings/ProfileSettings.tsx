@@ -21,7 +21,7 @@ type FormData = {
 export const ProfileSettings = () => {
     const isSignedIn = useAppSelector(signedIn)
     const router = useRouter()
-    const {register, setValue, handleSubmit, formState: {errors}} = useForm<FormData>({
+    const {register, setValue, handleSubmit, formState: {errors,isValid}} = useForm<FormData>({
         mode:"onTouched" || "onBlur"|| "onChange",
         defaultValues: {
             userName: '',
@@ -30,10 +30,10 @@ export const ProfileSettings = () => {
             MUIPicker: new Date()
         }
     });
-    // const onSubmit = handleSubmit(data => console.log(data))
-    const onSubmit =(data:FormData)=>{
-        alert(JSON.stringify(data))
-    }
+    const onSubmit = handleSubmit(data => console.log(data))
+    // const onSubmit =(data:FormData)=>{
+    //     alert(JSON.stringify(data))
+    // }
 
 
     // if(!isSignedIn){
@@ -77,9 +77,7 @@ export const ProfileSettings = () => {
                                 {/*</LocalizationProvider>*/}
                                 <Button
                                     type="submit"
-                                    onClick={() => {
-                                        setValue("lastName", "luo")
-                                    }}
+                                    disabled={!isValid}
                                 >
                                     Save Changes
                                 </Button>
