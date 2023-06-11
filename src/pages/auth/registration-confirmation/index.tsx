@@ -5,7 +5,7 @@ import {useRegistrationConfirmationMutation} from "@/services/authApi/authApi";
 import Image from "next/image";
 import regConfirmImg from '../../../assets/img/auth/regConfirmImg.png'
 import {ContainerForConfirm} from "@/components/Auth/RegistrationConfirmation/ContainerForConfirm/ContainerForConfirm";
-import ButtonBlue from "@/components/Auth/RecoveryPassword/Button/ButtonBlue";
+import ButtonBlue from "@/components/Auth/RecoveryPassword/ButtonBlue/ButtonBlue";
 import CustomButton from "@/assets/common/CustomButton/CustomButton";
 
 const RegistrationConfirmation = () => {
