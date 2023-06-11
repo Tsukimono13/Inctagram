@@ -4,7 +4,7 @@ import s from "src/components/Auth/RecoveryPassword/SentEmail/SentEmail.module.s
 import CloseIcon from '@mui/icons-material/Close';
 import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
 import variables from 'src/styles/variables.module.scss';
-import ButtonBlue from "@/components/Auth/RecoveryPassword/ButtonBlue/ButtonBlue";
+import ButtonBlue from "../../../Buttons/ButtonBlue/ButtonBlue";
 import {useRouter} from "next/router";
 
 const SentEmail = () => {

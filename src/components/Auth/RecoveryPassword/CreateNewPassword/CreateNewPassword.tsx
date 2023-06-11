@@ -7,7 +7,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import s from 'src/components/Auth/RecoveryPassword/CreateNewPassword/CreateNewPassword.module.scss'
 import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
 import variables from 'src/styles/variables.module.scss';
-import ButtonBlue from "@/components/Auth/RecoveryPassword/ButtonBlue/ButtonBlue";
+import ButtonBlue from "../../../Buttons/ButtonBlue/ButtonBlue";
 import {useRouter} from "next/router";
 import {useCreateNewPasswordMutation,} from "@/services/authApi/authApi";
 

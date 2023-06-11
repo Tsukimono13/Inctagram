@@ -3,7 +3,7 @@ import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForA
 import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
 import variables from "@/styles/variables.module.scss";
 import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
-import ButtonBlue from "@/components/Auth/RecoveryPassword/ButtonBlue/ButtonBlue";
+import ButtonBlue from "../../../Buttons/ButtonBlue/ButtonBlue";
 import Image from "next/image";
 import resendImg from 'src/assets/img/auth/recent-link.png'
 import Link from "next/link";

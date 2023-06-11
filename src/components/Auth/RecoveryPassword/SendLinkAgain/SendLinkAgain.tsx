@@ -4,7 +4,7 @@ import {TextField} from "@mui/material";
 import s from "@/components/Auth/RecoveryPassword/RecoveryPassword.module.scss";
 import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
 import variables from "@/styles/variables.module.scss";
-import ButtonBlue from "@/components/Auth/RecoveryPassword/ButtonBlue/ButtonBlue";
+import ButtonBlue from "../../../Buttons/ButtonBlue/ButtonBlue";
 import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForAuth/ContainerForAuth";
 import {useForm} from "react-hook-form";
 import CustomLink from "@/components/Auth/RecoveryPassword/Link/Link";
