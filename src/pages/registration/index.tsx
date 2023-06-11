@@ -1,6 +1,6 @@
 import {getLayout} from "@/components/Layout/Layout";
 import React from "react";
-import RegistrationForm from "@/components/RegistrationForm/RegistrationForm";
+import RegistrationForm from "@/components/Auth/RegistrationForm/RegistrationForm";
 
 
 

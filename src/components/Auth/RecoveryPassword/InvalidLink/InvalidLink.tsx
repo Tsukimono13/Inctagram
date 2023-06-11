@@ -1,11 +1,11 @@
 import React from 'react';
-import {ContainerForAuth} from "@/components/RecoveryPassword/ContainerForAuth/ContainerForAuth";
-import TitleForAuth from "@/components/RecoveryPassword/TitleForAuth/TitleForAuth";
+import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForAuth/ContainerForAuth";
+import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
 import variables from "@/styles/variables.module.scss";
-import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
+import ButtonBlue from "@/components/Auth/RecoveryPassword/Button/ButtonBlue";
 import Image from "next/image";
-import resendImg from '../../../assets/img/auth/recent-link.png'
+import resendImg from 'src/assets/img/auth/recent-link.png'
 import Link from "next/link";
 
 const InvalidLink = () => {

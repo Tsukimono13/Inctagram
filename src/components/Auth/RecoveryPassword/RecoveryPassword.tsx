@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {TextField} from "@mui/material";
-import s from './RecoveryPassword.module.scss'
-import variables from '../../styles/variables.module.scss';
-import {Recaptcha} from "@/components/RecoveryPassword/ReCaptcha/ReCaptcha";
-import TitleForAuth from "@/components/RecoveryPassword/TitleForAuth/TitleForAuth";
-import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
-import {ContainerForAuth} from "@/components/RecoveryPassword/ContainerForAuth/ContainerForAuth";
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import s from 'src/components/Auth/RecoveryPassword/RecoveryPassword.module.scss'
+import variables from 'src/styles/variables.module.scss';
+import {Recaptcha} from "@/components/Auth/RecoveryPassword/ReCaptcha/ReCaptcha";
+import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
+import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
+import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForAuth/ContainerForAuth";
+import ButtonBlue from "@/components/Auth/RecoveryPassword/Button/ButtonBlue";
 import {useForgotPasswordMutation} from "@/services/authApi/authApi";
 import {useRouter} from "next/router";
-import CustomLink from "@/components/RecoveryPassword/Link/Link";
+import CustomLink from "@/components/Auth/RecoveryPassword/Link/Link";
 
 
 const RecoveryPassword = () => {

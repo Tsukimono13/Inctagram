@@ -1,10 +1,10 @@
 import React from 'react';
-import TitleForAuth from "@/components/RecoveryPassword/TitleForAuth/TitleForAuth";
-import s from "./SentEmail.module.scss";
+import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
+import s from "src/components/Auth/RecoveryPassword/SentEmail/SentEmail.module.scss";
 import CloseIcon from '@mui/icons-material/Close';
-import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
-import variables from '../../../styles/variables.module.scss';
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
+import variables from 'src/styles/variables.module.scss';
+import ButtonBlue from "@/components/Auth/RecoveryPassword/Button/ButtonBlue";
 import {useRouter} from "next/router";
 
 const SentEmail = () => {

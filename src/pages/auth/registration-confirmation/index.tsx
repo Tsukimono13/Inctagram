@@ -4,12 +4,14 @@ import {useRouter} from "next/router";
 import {useRegistrationConfirmationMutation} from "@/services/authApi/authApi";
 import Image from "next/image";
 import regConfirmImg from '../../../assets/img/auth/regConfirmImg.png'
-import {ContainerForConfirm} from "@/components/RegistrationConfirmation/ContainerForConfirm/ContainerForConfirm";
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import {ContainerForConfirm} from "@/components/Auth/RegistrationConfirmation/ContainerForConfirm/ContainerForConfirm";
+import ButtonBlue from "@/components/Auth/RecoveryPassword/Button/ButtonBlue";
+import CustomButton from "@/assets/common/CustomButton/CustomButton";
 
 const RegistrationConfirmation = () => {
 
     const router = useRouter()
+
     const {code} = router.query
 
     const [registrationConfirmation] = useRegistrationConfirmationMutation()
@@ -27,7 +29,7 @@ const RegistrationConfirmation = () => {
             <h1>Congratulations !</h1>
             <h2>Your email has been confirmed</h2>
 
-            <ButtonBlue disabled={false} title={'Sign In'} width={'185'} callback={() => router.push('/signIn')}/>
+            <ButtonBlue disabled={false} title={'Sign In'} width={185} callback={() => router.push('/signIn')}/>
             <Image src={regConfirmImg} alt={'regConfirmImg'}/>
         </ContainerForConfirm>
 

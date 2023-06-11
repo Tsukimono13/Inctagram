@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import TitleForAuth from "@/components/RecoveryPassword/TitleForAuth/TitleForAuth";
+import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
 import {TextField} from "@mui/material";
-import s from "@/components/RecoveryPassword/RecoveryPassword.module.scss";
-import TextForAuth from "@/components/RecoveryPassword/TextForAuth/TextForAuth";
+import s from "@/components/Auth/RecoveryPassword/RecoveryPassword.module.scss";
+import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
 import variables from "@/styles/variables.module.scss";
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
-import {ContainerForAuth} from "@/components/RecoveryPassword/ContainerForAuth/ContainerForAuth";
+import ButtonBlue from "@/components/Auth/RecoveryPassword/Button/ButtonBlue";
+import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForAuth/ContainerForAuth";
 import {useForm} from "react-hook-form";
-import CustomLink from "@/components/RecoveryPassword/Link/Link";
+import CustomLink from "@/components/Auth/RecoveryPassword/Link/Link";
 
 const SendLinkAgain = () => {
   const [token, setToken] = useState<string>('')
