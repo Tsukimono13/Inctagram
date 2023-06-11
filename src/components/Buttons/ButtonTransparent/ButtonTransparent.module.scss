@@ -10,18 +10,16 @@
   border: 2px solid #397DF6;
 
   &:active{
-    background: transparent   ;
   }
   &:hover{
-    background: #73A5FF;
+    color: #73A5FF;
     border: 2px solid #73A5FF ;
   }
   &:focus{
-    background: #2F68CC;
+    color: #2F68CC;
     border: 2px solid #2F68CC     ;
   }
   &:disabled{
-    background: #234E99;
     color: #234E99;
   }
 }
