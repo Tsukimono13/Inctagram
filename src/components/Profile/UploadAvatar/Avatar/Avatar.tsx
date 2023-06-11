@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Avatar.module.scss'
-import defaultAva from '../../../assets/img/icons/picture.png'
+import defaultAva from '../../../../assets/img/icons/picture.png'
 import Image from "next/image";
 
 type Props = {
