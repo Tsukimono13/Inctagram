@@ -7,10 +7,10 @@ import {Recaptcha} from "@/components/Auth/RecoveryPassword/ReCaptcha/ReCaptcha"
 import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
 import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
 import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForAuth/ContainerForAuth";
-import ButtonBlue from "@/components/Auth/RecoveryPassword/Button/ButtonBlue";
 import {useForgotPasswordMutation} from "@/services/authApi/authApi";
 import {useRouter} from "next/router";
 import CustomLink from "@/components/Auth/RecoveryPassword/Link/Link";
+import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
 
 
 const RecoveryPassword = () => {

@@ -1,0 +1,50 @@
+@import "src/styles/variables.module";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: grey;
+  width: 726px;
+  color: #BDC1C7;
+
+  .settingOptions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #BDC1C7;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+    .UserPhoto {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 192px;
+      height: 192px;
+      background: white;
+
+      .img {
+        width: 192px;
+        height: 192px;
+      }
+
+      .button {
+      }
+    }
+
+    .UserInformation {
+
+      background: grey;
+    }
+  }
+
+}
