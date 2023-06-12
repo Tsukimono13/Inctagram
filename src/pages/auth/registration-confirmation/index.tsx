@@ -21,10 +21,7 @@ const RegistrationConfirmation = () => {
             registrationConfirmation({confirmationCode: code})
         }
 
-    }, [])
-
-
-    const handler = () => router.push('/signIn')
+    }, [code])
 
     return (
 
@@ -32,7 +29,7 @@ const RegistrationConfirmation = () => {
             <h1>Congratulations !</h1>
             <h2>Your email has been confirmed</h2>
 
-            <CustomButton title={'Sign In'} callback={handler}/>
+            <ButtonBlue disabled={false} title={'Sign In'} width={185} callback={() => router.push('/signIn')}/>
             <Image src={regConfirmImg} alt={'regConfirmImg'}/>
         </ContainerForConfirm>
 
