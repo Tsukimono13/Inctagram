@@ -71,37 +71,7 @@
   }
 }
 
-.avatar {
-  border-radius: 2px;
-  object-fit: cover;
-  margin: 28px 80px 36px 80px;
-  width: 332px;
-  height: 340px;
-  position: relative;
-}
 
-.avatar__back{
-  padding: 12px 8px;
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 332px;
-  height: 340px;
-  overflow: hidden;
-}
-.avatar__back_inner{
-  width: 316px;
-  height: 316px;
-  position: absolute;
-  left: 50%;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 0 0 150px rgba(0, 0, 0, 0.8);
-}
-.button_conteiner{
-  text-align: end;
-  padding: 0 24px 36px 0;
-}
 
 
 

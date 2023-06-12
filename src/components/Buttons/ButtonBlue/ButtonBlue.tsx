@@ -2,14 +2,15 @@ import React, {FC} from 'react';
 import s from './ButtonBlue.module.scss'
 
 type PropsType = {
-  title: string
+  children?:React.ReactNode
+  title?: string
   width: string
   disabled: boolean
   type?: 'submit' | undefined | 'button'
   callback?: () => void
 }
 
-const ButtonBlue: FC<PropsType> = ({title, width, disabled, type, callback}) => {
+const ButtonBlue: FC<PropsType> = ({title, width, disabled, type, callback,children}) => {
   const style = {
     width: width
   }
@@ -22,6 +23,7 @@ const ButtonBlue: FC<PropsType> = ({title, width, disabled, type, callback}) => 
       className={s.button}
     >
       {title}
+      {children}
     </button>
   );
 };
