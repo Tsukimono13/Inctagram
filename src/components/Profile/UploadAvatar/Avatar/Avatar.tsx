@@ -8,13 +8,12 @@ type Props = {
 }
 
 const Avatar = ({path}: Props) => {
-
   return (
     <div className={s.avatar}>
       {
         path
-          ?<Image className={s.avatarImg} src={path} alt="Avatar" width={192} height={192}/>
-          :<Image className={s.defaultAva} src={defaultAva} alt="Avatar" width={36} height={36}/>
+          ? <Image className={s.avatarImg} src={path} alt="Avatar" width={192} height={192}/>
+          : <Image className={s.defaultAva} src={defaultAva} alt="Avatar" width={36} height={36}/>
       }
 
     </div>

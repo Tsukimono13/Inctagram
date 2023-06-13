@@ -8,15 +8,16 @@ import Image from "next/image";
 import ButtonBlue from "@/components/Buttons/ButtonBlue/ButtonBlue";
 import Editor from "@/components/Profile/UploadAvatar/Editor/Editor";
 
-const AddAvatarModalWindow = () => {
+type Props={
+  showModal:(value:boolean)=>void
+}
+const AddAvatarModalWindow = ({showModal}:Props) => {
   const [preview, setPreview] = useState<string>('')
 
   const [errorImg, setErrorImg] = useState("")
 
   const router = useRouter()
-  const onClickHandler = () => {
-    return router.push('/profile-settings')
-  }
+
   const uploadHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length) {
       const file = e.target.files[0]
@@ -28,7 +29,9 @@ const AddAvatarModalWindow = () => {
       }
     }
   }
-
+  const onClickHandler=()=>{
+    showModal(false)
+  }
   return (
     <div className={s.modalWrapper}>
       <div className={s.modal}>
@@ -53,7 +56,7 @@ const AddAvatarModalWindow = () => {
             </div>)
           : (
             <>
-            <Editor preview={preview}/>
+            <Editor preview={preview} showModal={showModal} />
             </>
           )
         }

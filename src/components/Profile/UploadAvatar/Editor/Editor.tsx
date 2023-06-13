@@ -1,23 +1,31 @@
 import React, {useRef} from 'react'
-import AvatarEditor  from 'react-avatar-editor'
+import AvatarEditor from 'react-avatar-editor'
 import s from "./Editor.module.scss";
 import ButtonBlue from "@/components/Buttons/ButtonBlue/ButtonBlue";
-import {useRouter} from "next/router";
+import {ResponseUploadAvatar, useUploadAvatarMutation} from "@/services/profileApi/profileApi";
+import {convertCanvasToBinaryFile} from "@/common/utils/convert-canvas-to-binaryFile";
 
 type Props = {
   preview: string
+  showModal:(value:boolean)=>void
 }
-const Editor = ({preview}: Props) => {
-
+const Editor = ({preview,showModal}: Props) => {
+  const [uploadAvatar, {isLoading, isError}] = useUploadAvatarMutation()
   const editor = useRef<null | AvatarEditor>(null)
 
-  const saveAvatar = () => {
+  const saveAvatar = async () => {
     if (editor?.current) {
       // If you want the image resized to the canvas size (also a HTMLCanvasElement)
-
       const canvasScaled = editor.current.getImageScaledToCanvas()
-      const base64Canvas = canvasScaled.toDataURL("image/jpeg").split(';base64,')[1];
-      console.log(base64Canvas)
+      const formData = convertCanvasToBinaryFile(canvasScaled)
+
+      try {
+        const res = await uploadAvatar(formData) as {data: ResponseUploadAvatar}
+        showModal(false)
+      } catch (e) {
+        console.log(e)
+      }
+
     }
   }
   return (
@@ -35,7 +43,7 @@ const Editor = ({preview}: Props) => {
         />
       </div>
       <div className={s.button_container}>
-        <ButtonBlue title={'Save'} width={'86px'} disabled={false} callback={saveAvatar}/>
+        <ButtonBlue title={'Save'} width={'86px'} disabled={isLoading} callback={saveAvatar}/>
       </div>
 
     </>
