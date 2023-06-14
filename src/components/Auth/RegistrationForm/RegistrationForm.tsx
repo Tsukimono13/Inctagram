@@ -1,20 +1,22 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from "react";
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {
     Box,
     Button,
     Container,
-    Grid, Stack,
-    TextField,
+    Grid, IconButton, InputAdornment, Stack,
+    TextField
 } from "@mui/material";
 import {useRouter} from "next/router";
 import {LoginType, RegistrationType, useRegistrationMutation, useSignInMutation} from "@/services/authApi/authApi";
 import Link from "next/link";
 import {useAppSelector} from "@/hooks/useAppSelector";
-import {signedIn, signedUp} from "@/features/authReducer/authSelectors";
+import {signedUp} from "@/features/authReducer/authSelectors";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Image from "next/image";
 import GoodleIcon from "public/icons/Google.svg"
 import GithubIcon from "public/icons/Github.svg"
+import styled from "styled-components";
 
 
 type FormPropsType = {
@@ -25,8 +27,11 @@ type FormPropsType = {
 };
 
 const RegistrationForm: React.FC = () => {
+    const isSignedUp = useAppSelector(signedUp);
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
-    const isSignedUp = useAppSelector(signedUp)
 
     const router = useRouter()
 
@@ -55,11 +60,11 @@ const RegistrationForm: React.FC = () => {
         }
     }
     return (
-        <Container component={'main'} maxWidth={'xs'} style={{backgroundColor: '#171717'}}>
+        <Container component={'main'} maxWidth={'xs'} style={{backgroundColor: '#171717', marginTop: '24px'}}>
             <Box
                 sx={{
                     marginTop: 8,
-                    height: '84vh',
+                    height: "612px",
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -69,14 +74,17 @@ const RegistrationForm: React.FC = () => {
                 <h1>Sign Up</h1>
                 <Grid container
                       alignItems="center"
-                      justifyContent="space-evenly">
+                      justifyContent="center"
+                      gap="60px"
+                      style={{ marginTop: '13px' }}>
                     <Image src={GoodleIcon} alt={'google icon'}/>
                     <Image src={GithubIcon} alt={'github icon'}/>
                 </Grid>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Stack spacing={2} width={400}>
-                        <div> {isError && <div style={{color: 'red'}}>Index or Password are incorrect</div>}</div>
+                        <div> {isError && <div style={{color: 'red'}}>Email or Password are incorrect</div>}</div>
                         <TextField
+                            InputLabelProps={{className: "textField"}}
                             id="standard-basic"
                             variant="standard"
                             label="Username"
@@ -96,12 +104,13 @@ const RegistrationForm: React.FC = () => {
                             required
                         />
                         <TextField
+                            InputLabelProps={{className: "textField"}}
                             id="standard-basic"
                             variant="standard"
-                            label="Index"
-                            type="email"
+                            label="Email"
+                            type="text"
                             {...register('email', {
-                                required: "Index is required",
+                                required: "Email is required",
                                 pattern: {
                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                                     message: 'Invalid email address',
@@ -112,10 +121,11 @@ const RegistrationForm: React.FC = () => {
                         />
                         {errors?.email && <div style={{color: "red"}}>{errors.email.message}</div>}
                         <TextField
+                            InputLabelProps={{className: "textField"}}
                             id="standard-basic"
                             variant="standard"
                             label="Password"
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             {...register('password', {
                                 required: "Password is required",
                                 minLength: {
@@ -125,14 +135,29 @@ const RegistrationForm: React.FC = () => {
                             })}
                             error={!!errors.password}
                             required
+                            InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                      <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        sx={{ color: "rgba(255,255,255,0.65)" }}
+                                      >
+                                          {showPassword ? <Visibility /> : <VisibilityOff />}
+                                      </IconButton>
+                                  </InputAdornment>
+                                ),
+                            }}
                         />
                     {/*   // {renderField('standart-basic', 'password confimation', password.validation,
                        // 232323, 2323232,232323233)}*/}
                         <TextField
+                            InputLabelProps={{className: "textField"}}
                             id="standard-basic"
                             variant="standard"
                             label="Password confirmation"
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             {...register('passwordConfirmation', {
                                 required: "Password is required",
                                 minLength: {
@@ -143,18 +168,37 @@ const RegistrationForm: React.FC = () => {
                             })}
                             error={!!errors.passwordConfirmation}
                             required
+                            InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                      <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        sx={{ color: "rgba(255,255,255,0.65)" }}
+                                      >
+                                          {showPassword ? <Visibility /> : <VisibilityOff />}
+                                      </IconButton>
+                                  </InputAdornment>
+                                ),
+                            }}
                         />
-                        <Button type="submit" variant="contained" color="primary" disabled={isLoading}>
+                        <Button type="submit" variant="contained" color="primary" disabled={isLoading} style={{ marginTop: '36px' }}>
                             Sign Up
                         </Button>
                         <Grid container direction="column"
                               alignItems="center"
                               justifyContent="center">
-                            <Grid item paddingBottom={5}>
+                            <Grid container
+                                  direction="column"
+                                  alignItems="center"
+                                  justifyContent="center"
+                                  style={{ marginTop: '2px' }}>
                                 Do you have an account?
-                                <Grid container direction="column"
-                                      alignItems="center">
-                                    <Link href={'signIn'} style={{textDecoration: 'none'}}>Sign In</Link>
+                                <Grid style={{ marginTop: '12px' }}>
+                                  <Link href={"signIn"} style={{textDecoration: "none"}}>
+                                    <SignInText>Sign In</SignInText>
+                                  </Link>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -168,4 +212,9 @@ const RegistrationForm: React.FC = () => {
 
 export default RegistrationForm;
 
-
+const SignInText = styled.p`
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #397DF6;
+`
