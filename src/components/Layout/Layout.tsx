@@ -1,10 +1,13 @@
 import {NextPage} from "next";
-import {PropsWithChildren, ReactElement} from "react";
+import { PropsWithChildren, ReactElement, ReactNode } from "react";
 import {Header} from "../Header/Header";
 import s from './layout.module.css'
 
-export const Layout: NextPage<PropsWithChildren> = (props) => {
-    const {children} = props
+
+type LayoutProps = {
+  children: ReactNode;
+};
+export const Layout = ({ children }: LayoutProps) => {
 
     return (
         <div className={s.container}>

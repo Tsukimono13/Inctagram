@@ -22,7 +22,7 @@ type LoginResponseType = {
 }
 
 type RegistrationConfirmation = {
-    confirmationCode: string
+    confirmationCode: string[]
 }
 
 

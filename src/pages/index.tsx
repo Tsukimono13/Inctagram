@@ -6,7 +6,7 @@ import {signedIn} from "@/features/authReducer/authSelectors";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 
-const Home: NextPageWithLayout = () => {
+const Home = () => {
 
     const isSignedIn = useAppSelector(signedIn)
 
