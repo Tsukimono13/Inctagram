@@ -174,7 +174,6 @@ export const ProfileSettings = () => {
                                     >
                                         Save Changes
                                     </Button>
-
                                 </Box>
                             </FormControl>
                         </form>
