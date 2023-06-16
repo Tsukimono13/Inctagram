@@ -3,8 +3,8 @@ import {SubmitHandler, useForm} from 'react-hook-form';
 import {
     Box,
     Button,
-    Container, FormControl,
-    Grid, IconButton, Input, InputAdornment, InputLabel, Stack,
+    Container,
+    Grid, Stack,
 } from "@mui/material";
 import {useRouter} from "next/router";
 import {LoginType, useSignInMutation} from "@/services/authApi/authApi";
@@ -12,7 +12,8 @@ import Link from "next/link";
 import Image from "next/image";
 import GoogleIcon from "public/icons/Google.svg"
 import GithubIcon from "public/icons/Github.svg"
-import {Visibility, VisibilityOff} from "@mui/icons-material";
+import CustomInput from "@/components/CustomComponents/CustomInput/CustomInput";
+import CustomButton from "@/components/CustomComponents/CustomButton/CustomButton";
 
 
 
@@ -87,52 +88,21 @@ export const SignInForm: React.FC = () => {
                               justifyContent={'center'}
                         > {isError && <div style={{color: 'red'}}>Email or Password are incorrect</div>}</Grid>
 
-                        <FormControl sx={{m: 1}} variant="standard">
-                            <InputLabel htmlFor="standard-adornment-email" error={!!errors.email}
-                                        required>Email</InputLabel>
-                            <Input
-                                id="standard-adornment-email"
-                                type={'email'}
-                                {...register('email', {
-                                    required: "Index is required",
-                                    pattern: {
-                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                        message: 'Invalid email address',
-                                    },
-                                })}
-                                error={!!errors.email}
-                                required
-                            />
-                        </FormControl>
-
-                        <FormControl sx={{m: 1}} variant="standard">
-                            <InputLabel htmlFor="standard-adornment-password" error={!!errors.password}
-                                        required>Password</InputLabel>
-                            <Input
-                                id="standard-adornment-password"
-                                type={showPassword ? 'text' : 'password'}
-                                {...register('password', {
-                                    required: "Password is required",
-                                    minLength: {
-                                        value: 8,
-                                        message: 'Password must be at least 8 characters',
-                                    },
-                                })}
-                                error={!!errors.password}
-                                required
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                        >
-                                            {showPassword ? <VisibilityOff/> : <Visibility/>}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                            />
-                        </FormControl>
+                        <CustomInput
+                            label="Email"
+                            id="email"
+                            type="email"
+                            register={register}
+                            errors={errors.email} />
+                        <CustomInput
+                            label="Password"
+                            id="password"
+                            type="password"
+                            register={register}
+                            errors={errors.password}
+                            showPassword={showPassword}
+                            handleClickShowPassword={handleClickShowPassword}
+                            handleMouseDownPassword={handleMouseDownPassword} />
 
                         <Link href={'recovery-password'} style={{
                             textDecoration: 'none',

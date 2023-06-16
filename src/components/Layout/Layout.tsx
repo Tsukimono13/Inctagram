@@ -4,10 +4,7 @@ import {Header} from "../Header/Header";
 import s from './layout.module.css'
 
 
-type LayoutProps = {
-  children: ReactNode;
-};
-export const Layout = ({ children }: LayoutProps) => {
+export const Layout:NextPage<PropsWithChildren> = ({ children }) => {
 
     return (
         <div className={s.container}>
@@ -17,5 +14,6 @@ export const Layout = ({ children }: LayoutProps) => {
     );
 }
 
+/*
 export const getLayout = (page: ReactElement) =>  <Layout>{page}</Layout>
-export type GetLayoutType = typeof getLayout;
+export type GetLayoutType = typeof getLayout;*/
