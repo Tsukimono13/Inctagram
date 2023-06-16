@@ -5,9 +5,7 @@ import {useRegistrationConfirmationMutation} from "@/services/authApi/authApi";
 import Image from "next/image";
 import regConfirmImg from '../../../assets/img/auth/regConfirmImg.png'
 import {ContainerForConfirm} from "@/components/Auth/RegistrationConfirmation/ContainerForConfirm/ContainerForConfirm";
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
-
-
+import CustomButton from "@/components/CustomComponents/CustomButton/CustomButton";
 
 const RegistrationConfirmation = () => {
 
@@ -15,14 +13,22 @@ const RegistrationConfirmation = () => {
 
     const {code} = router.query
 
-    const [registrationConfirmation] = useRegistrationConfirmationMutation()
+    const [registrationConfirmation,{loading,error}] = useRegistrationConfirmationMutation()
 
     useEffect(() => {
         if (code) {
             registrationConfirmation({confirmationCode: code})
         }
 
-    }, [code])
+        if(error) return router.push('/404')
+
+    }, [])
+
+
+    const handler = async () => {
+        console.log(code)
+       await router.push('/signIn')
+    }
 
     return (
 
@@ -30,7 +36,7 @@ const RegistrationConfirmation = () => {
             <h1>Congratulations !</h1>
             <h2>Your email has been confirmed</h2>
 
-            <ButtonBlue disabled={false} title={'Sign In'} width={'185px'} callback={() => router.push('/signIn')}/>
+            <CustomButton callback={handler}>Sign In</CustomButton>
             <Image src={regConfirmImg} alt={'regConfirmImg'}/>
         </ContainerForConfirm>
 
