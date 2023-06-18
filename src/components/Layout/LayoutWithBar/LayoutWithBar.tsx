@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactElement, ReactNode } from "react";
 import { NextPage } from "next";
 import HeaderProfile from "@/components/Header/headerProfile";
-import Sidebar from "@/sidebar/Sidebar";
+import Sidebar from "@/components/sidebar/Sidebar";
 import s from "./layoutWithBar.module.scss"
 
 

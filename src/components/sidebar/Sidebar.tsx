@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./sidebar.module.scss";
+import s from "src/components/sidebar/sidebar.module.scss";
 import Image from "next/image";
 import home from "public/icons/home.svg"
 import add from "public/icons/plus-square.svg"
