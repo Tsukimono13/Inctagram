@@ -1,7 +1,7 @@
 import {getLayout} from "@/components/Layout/Layout";
-import {ProfileSettings} from "@/components/ProfileSettings/ProfileSettings";
+import {LayoutWithBar} from "@/components/Layout/LayoutWithBar/LayoutWithBar";
 
-const Index = () => <ProfileSettings/>
+const Index = () => <LayoutWithBar/>
 
 Index.getLayout = getLayout
 
