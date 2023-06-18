@@ -12,11 +12,11 @@ const Home = () => {
 
     const router = useRouter()
 
-   /* useEffect(() => {
+    useEffect(() => {
 
         isSignedIn ? router.push('/profile') : router.push('/signIn')
 
-    }, [isSignedIn])*/
+    }, [isSignedIn])
 
 
     return (
