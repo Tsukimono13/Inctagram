@@ -32,6 +32,26 @@ export type UserType = {
     email: string
 }
 
+type AvatarsType = {
+    url: string,
+    width: number,
+    height: number,
+    fileSize: number
+}
+
+
+
+export type UserProfileType = {
+    id: number,
+    userName: string,
+    firstName: string,
+    lastName: string,
+    city: string,
+    dateOfBirth: Date,
+    aboutMe: string,
+    avatars: AvatarsType[]
+}
+
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery(
@@ -102,11 +122,28 @@ export const authApi = createApi({
                 url:'auth/me',
                 method:'GET'
             })
-        })
+        }),
+        getProfile:builder.mutation<UserProfileType,void>({
+            query:()=>({
+                url:'users/profile',
+                method:'GET'
+            })
+        }),
+        updateProfile:builder.mutation<any,any>({
+            query:(body)=>({
+                url:'users/profile',
+                method:'PUT',
+                body
+            })
+        }),
+
     }),
 });
 
-export const {useSignInMutation, useLogOutMutation, useRegistrationMutation, useUserQuery,
-    useForgotPasswordMutation,useCreateNewPasswordMutation,useCheckRecoveryCodeMutation,useRegistrationConfirmationMutation} = authApi;
+export const {useSignInMutation,useUpdateProfileMutation,
+    useLogOutMutation, useRegistrationMutation,
+    useUserQuery,useGetProfileMutation,
+    useForgotPasswordMutation,useCreateNewPasswordMutation,
+    useCheckRecoveryCodeMutation,useRegistrationConfirmationMutation} = authApi;
 
 
