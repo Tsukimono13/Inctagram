@@ -1,11 +1,10 @@
 'use client'
-import {NextPageWithLayout} from "@/pages/_app";
-
 import {useAppSelector} from "@/hooks/useAppSelector";
 import {signedIn} from "@/features/authReducer/authSelectors";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
-import { getLayout } from "@/components/Layout/LayoutWithBar/LayoutWithBar";
+import s from "./home.module.scss"
+
 
 const Home = () => {
 
@@ -21,12 +20,12 @@ const Home = () => {
 
 
     return (
-        <div>
-            <h1>Hi Hello Yo-yo Hi</h1>
-        </div>
+            <div className={s.wrapper}>
+                <h1 className={s.title}>Inctagram</h1>
+            </div>
     )
 }
 
-Home.getLayout = getLayout
+
 export default Home;
 

@@ -1,0 +1,31 @@
+@import "src/styles/variables.module";
+
+.title {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+  color: $white-color;
+  position: relative;
+  display: inline-block;
+  animation: animateTitle 3s ease-in-out infinite;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+@keyframes animateTitle {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
