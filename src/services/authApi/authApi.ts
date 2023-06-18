@@ -39,6 +39,8 @@ type AvatarsType = {
     fileSize: number
 }
 
+
+
 export type UserProfileType = {
     id: number,
     userName: string,
@@ -126,11 +128,22 @@ export const authApi = createApi({
                 url:'users/profile',
                 method:'GET'
             })
-        })
+        }),
+        updateProfile:builder.mutation<any,any>({
+            query:(body)=>({
+                url:'users/profile',
+                method:'PUT',
+                body
+            })
+        }),
+
     }),
 });
 
-export const {useSignInMutation, useLogOutMutation, useRegistrationMutation, useUserQuery,useGetProfileMutation,
-    useForgotPasswordMutation,useCreateNewPasswordMutation,useCheckRecoveryCodeMutation,useRegistrationConfirmationMutation} = authApi;
+export const {useSignInMutation,useUpdateProfileMutation,
+    useLogOutMutation, useRegistrationMutation,
+    useUserQuery,useGetProfileMutation,
+    useForgotPasswordMutation,useCreateNewPasswordMutation,
+    useCheckRecoveryCodeMutation,useRegistrationConfirmationMutation} = authApi;
 
 

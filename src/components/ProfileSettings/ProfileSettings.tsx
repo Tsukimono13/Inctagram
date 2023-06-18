@@ -7,12 +7,14 @@ import {useForm} from "react-hook-form";
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {Box, Button, FormControl, Link, Stack, TextField} from "@mui/material";
-import {useGetProfileMutation, UserProfileType} from "@/services/authApi/authApi";
+import {useGetProfileMutation, UserProfileType, useUpdateProfileMutation} from "@/services/authApi/authApi";
 import iconNoPhoto from "../../assets/img/profileSettings/icon-no-photo.png"
 import {DesktopDatePicker} from "@mui/x-date-pickers";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import dayjs from "dayjs";
 import {firstLastNameValidation} from "@/components/ProfileSettings/validation";
+import {ButtonHTMLAttributes, MouseEventHandler, useState} from "react";
+
 
 
 type FormData = {
@@ -38,11 +40,13 @@ export const ProfileSettings = () => {
             {id: 2, settingName: 'Account Management', href: '#'},
             {id: 3, settingName: 'My payments', href: '#'},
         ]
+        const [optionsIsActive,setOptionsIsActive] = useState(0)
 
 
         const isSignedIn = useAppSelector(signedIn)
         const router = useRouter()
         const userProfile = useGetProfileMutation<UserProfileType>()
+        const updateProfile = useUpdateProfileMutation()
 
 
         const {register, setValue, handleSubmit, formState: {errors, isValid}} = useForm<FormData>({
@@ -57,12 +61,18 @@ export const ProfileSettings = () => {
             }
         });
         const onSubmit = handleSubmit(data => {
+            // if (data) {
+            //     updateProfile({})
+            // }
             console.log(data)
             alert(JSON.stringify(data))
         })
 
         const changePhotoHandler = () => {
 
+        }
+        const changeSettingOptions = (id: number) => {
+          setOptionsIsActive(id)
         }
 
         const theme = createTheme({
@@ -79,6 +89,7 @@ export const ProfileSettings = () => {
 
         return (
             <div className={s.profileSettingsContainer}>
+
                 <div className={s.container}>
                     <Box
                         sx={{
@@ -94,21 +105,15 @@ export const ProfileSettings = () => {
 
                     >
                         {settingsInformation.map(s => {
-                            return <Link sx={{
-                                color: '#BDC1C7',
-
-                            }}
-                                         key={s.id}
-                                         href={s.href}
-                                         underline="hover">{s.settingName}
-                            </Link>
+                            return <button
+                                key={s.id} onClick={() => changeSettingOptions(s.id)}>{s.settingName}</button>
                         })}
                     </Box>
                     <div className={s.content}>
                         <Stack className={s.photoContainer}>
                             <Box className={s.UserPhoto}>
                                 <button onClick={changePhotoHandler} className={s.img}>
-                                    <div src={iconNoPhoto} className={s.icon}></div>
+                                    <div className={s.icon}></div>
                                 </button>
 
                                 <Button sx={{
@@ -148,15 +153,16 @@ export const ProfileSettings = () => {
                                                     <DesktopDatePicker
                                                         label="Date of birthday"
                                                         format="DD.MM.YYYY"
+                                                        {...register("date")}
                                                     />
                                                 </LocalizationProvider>
                                             </Box>
                                             <TextField
-                                                       id="city"
-                                                       label="City"
-                                                       variant="standard"
+                                                id="city"
+                                                label="City"
+                                                variant="standard"
 
-                                                       {...register("city")} />
+                                                {...register("city")} />
                                             <TextField
                                                 id="aboutMe"
                                                 label="About me"
@@ -184,6 +190,7 @@ export const ProfileSettings = () => {
                                 </FormControl>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>
