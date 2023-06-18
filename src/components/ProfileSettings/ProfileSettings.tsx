@@ -109,89 +109,97 @@ export const ProfileSettings = () => {
                                 key={s.id} onClick={() => changeSettingOptions(s.id)}>{s.settingName}</button>
                         })}
                     </Box>
-                    <div className={s.content}>
-                        <Stack className={s.photoContainer}>
-                            <Box className={s.UserPhoto}>
-                                <button onClick={changePhotoHandler} className={s.img}>
-                                    <div className={s.icon}></div>
-                                </button>
 
-                                <Button sx={{
-                                    marginTop: '20px',
-                                    border: "1px solid "
-                                }} variant="outlined" onClick={changePhotoHandler}>Add a profile Photo</Button>
+                    {optionsIsActive === 0 ? <div className={s.content}>
+                            <Stack className={s.photoContainer}>
+                                <Box className={s.UserPhoto}>
+                                    <button onClick={changePhotoHandler} className={s.img}>
+                                        <div className={s.icon}></div>
+                                    </button>
 
-                            </Box>
-                        </Stack>
-                        <div className={s.UserInformation}>
-                            <form onSubmit={onSubmit}>
-                                <FormControl sx={{width: 494}}>
-                                    <Stack spacing={1}>
-                                        <ThemeProvider theme={theme}>
-                                            <TextField
-                                                id="userName"
-                                                label="Username"
-                                                variant="standard"
-                                                {...register("userName")} />
-                                            <TextField
-                                                id="firstName"
-                                                label="First Name"
-                                                variant="standard"
+                                    <Button sx={{
+                                        marginTop: '20px',
+                                        border: "1px solid "
+                                    }} variant="outlined" onClick={changePhotoHandler}>Add a profile Photo</Button>
 
-                                                {...register("firstName", firstLastNameValidation)} />
-                                            <TextField
-                                                id="lastName"
-                                                label="Last Name"
-                                                variant="standard"
+                                </Box>
+                            </Stack>
+                            <div className={s.userInformation}>
+                                <form onSubmit={onSubmit}>
+                                    <FormControl sx={{width: 494}}>
+                                        <Stack spacing={1}>
+                                            <ThemeProvider theme={theme}>
+                                                <TextField
+                                                    id="userName"
+                                                    label="Username"
+                                                    variant="standard"
+                                                    {...register("userName")} />
+                                                <TextField
+                                                    id="firstName"
+                                                    label="First Name"
+                                                    variant="standard"
 
-                                                {...register("lastName", firstLastNameValidation)} />
-                                            <Box sx={{
-                                                display: 'flex',
-                                                justifyContent: 'left',
-                                            }}>
-                                                <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
-                                                    <DesktopDatePicker
-                                                        label="Date of birthday"
-                                                        format="DD.MM.YYYY"
-                                                        {...register("date")}
-                                                    />
-                                                </LocalizationProvider>
-                                            </Box>
-                                            <TextField
-                                                id="city"
-                                                label="City"
-                                                variant="standard"
+                                                    {...register("firstName", firstLastNameValidation)} />
+                                                <TextField
+                                                    id="lastName"
+                                                    label="Last Name"
+                                                    variant="standard"
 
-                                                {...register("city")} />
-                                            <TextField
-                                                id="aboutMe"
-                                                label="About me"
-                                                multiline
-                                                rows={3}
-                                                defaultValue="Text-area"
-                                                {...register("aboutMe")}
-                                            />
-                                        </ThemeProvider>
-                                    </Stack>
-                                    <Box sx={{
-                                        display: 'flex',
-                                        justifyContent: 'right'
-                                    }}>
-                                        <Button sx={{
-                                            marginTop: '20px'
-                                        }}
-                                                type="submit"
-                                                variant="contained"
-                                                disabled={!isValid}
-                                        >
-                                            Save Changes
-                                        </Button>
-                                    </Box>
-                                </FormControl>
-                            </form>
-                        </div>
+                                                    {...register("lastName", firstLastNameValidation)} />
+                                                <Box sx={{
+                                                    display: 'flex',
+                                                    justifyContent: 'left',
+                                                }}>
+                                                    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
+                                                        <DesktopDatePicker
+                                                            label="Date of birthday"
+                                                            format="DD.MM.YYYY"
+                                                            // value={value}
+                                                            // onChange={(newValue) => setValue(newValue)}
+                                                        />
+                                                    </LocalizationProvider>
+                                                </Box>
+                                                <TextField
+                                                    id="city"
+                                                    label="City"
+                                                    variant="standard"
 
-                    </div>
+                                                    {...register("city")} />
+                                                <TextField
+                                                    id="aboutMe"
+                                                    label="About me"
+                                                    multiline
+                                                    rows={3}
+                                                    defaultValue="Text-area"
+                                                    {...register("aboutMe")}
+                                                />
+                                            </ThemeProvider>
+                                        </Stack>
+                                        <Box sx={{
+                                            display: 'flex',
+                                            justifyContent: 'right'
+                                        }}>
+                                            <Button sx={{
+                                                marginTop: '20px'
+                                            }}
+                                                    type="submit"
+                                                    variant="contained"
+                                                    disabled={!isValid}
+                                            >
+                                                Save Changes
+                                            </Button>
+                                        </Box>
+                                    </FormControl>
+                                </form>
+                            </div>
+                        </div> :
+                        optionsIsActive === 1 ? <div className={s.devices}>
+                                <div>This devices</div>
+                                <div>Active sessions</div>
+                            </div> :
+                            optionsIsActive === 2 ? <div >Account Management</div> :
+                                optionsIsActive === 3 ? <div>My payments</div> : ''
+                    }
                 </div>
             </div>
         );
