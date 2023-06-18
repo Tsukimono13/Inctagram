@@ -1,4 +1,5 @@
 @import "src/styles/variables.module";
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -20,6 +21,7 @@
     left: 50%;
     transform: translate(-50%, 50%);
   }
+
   .title {
     font-weight: 600;
     font-size: 26px;
@@ -29,6 +31,7 @@
 
     margin: 0 0 0 60px;
   }
+
   .logOut {
     //font-family: 'Inter';
     font-weight: 500;
@@ -41,7 +44,14 @@
     margin: 0 64px 0 0px;
   }
 }
+.headerProfile{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 
+  max-width: 100%;
+  height: 60px;
+}
 
 
 

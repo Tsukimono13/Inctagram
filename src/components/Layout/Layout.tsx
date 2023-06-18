@@ -14,6 +14,5 @@ export const Layout:NextPage<PropsWithChildren> = ({ children }) => {
     );
 }
 
-/*
 export const getLayout = (page: ReactElement) =>  <Layout>{page}</Layout>
-export type GetLayoutType = typeof getLayout;*/
+export type GetLayoutType = typeof getLayout;

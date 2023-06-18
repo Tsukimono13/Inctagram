@@ -1,11 +1,23 @@
-import { PropsWithChildren, ReactElement, ReactNode } from "react";
+import React, { PropsWithChildren, ReactElement, ReactNode } from "react";
 import { NextPage } from "next";
-import { Layout } from "@/components/Layout/Layout";
+import HeaderProfile from "@/components/Header/headerProfile";
+import Sidebar from "@/sidebar/Sidebar";
+import s from "./layoutWithBar.module.scss"
 
 
 export const LayoutWithBar:NextPage<PropsWithChildren> = ({ children }) => {
   return (
-   <Layout>{children}</Layout>
+    <div className={s.container}>
+    <div className={s.header}>
+      <HeaderProfile/>
+    </div>
+      <div className={s.sidebar}>
+        <Sidebar/>
+      </div>
+      <div className={s.content}>
+        {children}
+      </div>
+    </div>
   );
 };
 export function getLayout(page: ReactElement) {
