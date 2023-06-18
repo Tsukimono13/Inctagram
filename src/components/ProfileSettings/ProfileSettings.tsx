@@ -46,11 +46,10 @@ export const ProfileSettings = () => {
                 <div className={s.container}>
                     <Box
                         sx={{
-                            borderBottom: '1px solid red',
+                            borderBottom: '2px solid #4C4C4C',
                             display: 'flex',
                             flexWrap: 'nowrap',
                             justifyContent: 'space-evenly',
-
                         }}
 
                     >
@@ -73,10 +72,6 @@ export const ProfileSettings = () => {
 
 const Button = styled.button`
   font-size: 16px;
-  color: #4C4C4C;
-  &:hover {
-    color: #397DF6
-    
-  }
+  color: #4C4C4C;  
 `
 
