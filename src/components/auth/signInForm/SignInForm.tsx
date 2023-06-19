@@ -1,19 +1,18 @@
 import React, {useState} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
-import {
-    Box,
-    Button,
-    Container,
-    Grid, Stack,
-} from "@mui/material";
+import {Box} from "@mui/material/Box";
+import {Button} from '@mui/material/Button'
+import {Container} from '@mui/material/Container'
+import {Grid} from '@mui/material/Grid'
+import {Stack} from '@mui/material/Stack'
 import {useRouter} from "next/router";
 import {LoginType, useSignInMutation} from "@/services/authApi/authApi";
 import Link from "next/link";
 import Image from "next/image";
 import GoogleIcon from "public/icons/Google.svg"
 import GithubIcon from "public/icons/Github.svg"
-import CustomInput from "@/components/CustomComponents/CustomInput/CustomInput";
-import CustomButton from "@/components/CustomComponents/CustomButton/CustomButton";
+import CustomInput from "@/components/customComponents/customInput/CustomInput";
+import CustomButton from "@/components/customComponents/customButton/CustomButton";
 
 
 

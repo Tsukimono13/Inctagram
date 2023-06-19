@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
-import {TextField} from "@mui/material";
-import s from 'src/components/Auth/RecoveryPassword/RecoveryPassword.module.scss'
+import {TextField} from "@mui/material/TextField";
+import s from 'src/components/auth/recoveryPassword/RecoveryPassword.module.scss'
 import variables from 'src/styles/variables.module.scss';
-import {Recaptcha} from "@/components/Auth/RecoveryPassword/ReCaptcha/ReCaptcha";
-import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
-import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
-import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForAuth/ContainerForAuth";
+import {Recaptcha} from "@/components/auth/recoveryPassword/reCaptcha/ReCaptcha";
+import TitleForAuth from "@/components/auth/recoveryPassword/titleForAuth/TitleForAuth";
+import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForAuth";
+import {ContainerForAuth} from "@/components/auth/recoveryPassword/containerForAuth/ContainerForAuth";
 import {useForgotPasswordMutation} from "@/services/authApi/authApi";
 import {useRouter} from "next/router";
-import CustomLink from "@/components/Auth/RecoveryPassword/Link/Link";
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import CustomLink from "@/components/auth/recoveryPassword/link/Link";
+import ButtonBlue from "@/components/recoveryPassword/Button/ButtonBlue";
 
 
 const RecoveryPassword = () => {
@@ -72,7 +72,7 @@ const RecoveryPassword = () => {
           <div style={{marginBottom: '30px'}}>
             <ButtonBlue
               disabled={!isValid || !isDirty || isLoading}
-              title={'Send Link'}
+              title={'Send link'}
               width={'100%'}
               type={'submit'}
             />

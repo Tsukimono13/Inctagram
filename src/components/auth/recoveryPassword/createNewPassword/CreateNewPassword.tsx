@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
-import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForAuth/ContainerForAuth";
-import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
+import {ContainerForAuth} from "@/components/auth/recoveryPassword/containerForAuth/ContainerForAuth";
+import TitleForAuth from "@/components/auth/recoveryPassword/titleForAuth/TitleForAuth";
 import {useForm} from "react-hook-form"
-import {TextField} from "@mui/material";
+import {TextField} from "@mui/material/TextField";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import s from 'src/components/Auth/RecoveryPassword/CreateNewPassword/CreateNewPassword.module.scss'
-import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
+import s from 'src/components/auth/recoveryPassword/createNewPassword/CreateNewPassword.module.scss'
+import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForAuth";
 import variables from 'src/styles/variables.module.scss';
 import {useRouter} from "next/router";
 import {useCreateNewPasswordMutation,} from "@/services/authApi/authApi";
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import ButtonBlue from "@/components/recoveryPassword/Button/ButtonBlue";
 
 
 const CreateNewPassword = () => {
