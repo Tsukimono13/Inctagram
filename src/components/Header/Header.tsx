@@ -1,4 +1,4 @@
-import s from 'src/components/header/header.module.scss'
+import s from 'src/components/Header/header.module.scss'
 import {Button} from "@mui/material"
 import {useLogOutMutation} from "@/services/authApi/authApi";
 import Link from "next/link";
