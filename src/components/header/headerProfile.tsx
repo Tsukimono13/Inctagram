@@ -1,5 +1,5 @@
 import React from "react";
-import s from "src/components/header/header.module.scss";
+import s from "src/components/Header/header.module.scss";
 import Link from "next/link";
 
 const HeaderProfile = () => {
