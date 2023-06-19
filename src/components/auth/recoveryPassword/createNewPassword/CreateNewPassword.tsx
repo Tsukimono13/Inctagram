@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {ContainerForAuth} from "@/components/auth/recoveryPassword/containerForAuth/ContainerForAuth";
 import TitleForAuth from "@/components/auth/recoveryPassword/titleForAuth/TitleForAuth";
 import {useForm} from "react-hook-form"
-import {TextField} from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import s from 'src/components/auth/recoveryPassword/createNewPassword/CreateNewPassword.module.scss'
 import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForAuth";

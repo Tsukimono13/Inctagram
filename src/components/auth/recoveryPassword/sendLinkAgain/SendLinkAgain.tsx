@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import TitleForAuth from "@/components/auth/recoveryPassword/titleForAuth/TitleForAuth";
-import {TextField} from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
 import s from "@/components/auth/recoveryPassword/RecoveryPassword.module.scss";
 import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForAuth";
 import variables from "@/styles/variables.module.scss";

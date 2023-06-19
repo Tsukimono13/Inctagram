@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
-import {Box} from "@mui/material/Box";
-import {Button} from '@mui/material/Button'
-import {Container} from '@mui/material/Container'
-import {Grid} from '@mui/material/Grid'
-import {Stack} from '@mui/material/Stack'
+import Box from "@mui/material/Box";
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
 import {useRouter} from "next/router";
 import {LoginType, useSignInMutation} from "@/services/authApi/authApi";
 import Link from "next/link";

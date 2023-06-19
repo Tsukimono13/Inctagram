@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {SubmitHandler, useForm} from 'react-hook-form';
-import {Box} from "@mui/material/Box";
-import {Container} from '@mui/material/Container'
-import {Grid} from '@mui/material/Grid'
-import {IconButton} from '@mui/material/IconButton'
-import {InputAdornment} from '@mui/material/InputAdornment'
-import {Stack} from '@mui/material/Stack'
-import {Button} from '@mui/material/Button'
-import {TextField} from '@mui/material/TextField'
+import Box from "@mui/material/Box";
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
 import {useRouter} from "next/router";
 import {LoginType, RegistrationType, useRegistrationMutation, useSignInMutation} from "@/services/authApi/authApi";
 import Link from "next/link";

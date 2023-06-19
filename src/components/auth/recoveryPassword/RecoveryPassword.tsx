@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
-import {TextField} from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
 import s from 'src/components/auth/recoveryPassword/RecoveryPassword.module.scss'
 import variables from 'src/styles/variables.module.scss';
 import {Recaptcha} from "@/components/auth/recoveryPassword/reCaptcha/ReCaptcha";

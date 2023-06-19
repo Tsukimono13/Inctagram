@@ -1,9 +1,9 @@
 import React from 'react';
-import {FormControl} from '@mui/material/FormControl';
-import {InputLabel} from "@mui/material/InputLabel";
-import {Input} from '@mui/material/Input'
-import {IconButton} from '@mui/material/IconButton'
-import {InputAdornment} from '@mui/material/InputAdornment'
+import FormControl from '@mui/material/FormControl';
+import InputLabel from "@mui/material/InputLabel";
+import Input from '@mui/material/Input'
+import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { UseFormRegister } from 'react-hook-form/dist/types/form';
 
@@ -16,7 +16,7 @@ const emailValidationPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     label: string;
     id: string;
     type: string;
-    register: UseFormRegister;
+    register: UseFormRegister<any>;
     errors?: any;
     showPassword?: boolean;
     handleClickShowPassword?: () => void;
