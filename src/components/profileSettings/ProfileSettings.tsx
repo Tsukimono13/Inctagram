@@ -6,13 +6,17 @@ import s from "./ProfileSettings.module.scss"
 import {useForm} from "react-hook-form";
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
-import {Box, Button, FormControl, Link, Stack, TextField} from "@mui/material";
+import {Box} from "@mui/material/Box";
+import {FormControl} from '@mui/material/FormControl'
+import {TextField} from '@mui/material/TextField'
+import {Stack} from '@mui/material/Stack'
+import {Button} from '@mui/material/Button'
 import {useGetProfileMutation, UserProfileType, useUpdateProfileMutation} from "@/services/authApi/authApi";
 import iconNoPhoto from "../../assets/img/profileSettings/icon-no-photo.png"
 import {DesktopDatePicker} from "@mui/x-date-pickers";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import dayjs from "dayjs";
-import {firstLastNameValidation} from "@/components/ProfileSettings/validation";
+import {firstLastNameValidation} from "@/components/profileSettings/validation";
 import {ButtonHTMLAttributes, MouseEventHandler, useState} from "react";
 
 

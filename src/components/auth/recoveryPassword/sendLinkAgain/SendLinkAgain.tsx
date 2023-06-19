@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
-import {TextField} from "@mui/material";
-import s from "@/components/Auth/RecoveryPassword/RecoveryPassword.module.scss";
-import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
+import TitleForAuth from "@/components/auth/recoveryPassword/titleForAuth/TitleForAuth";
+import {TextField} from "@mui/material/TextField";
+import s from "@/components/auth/recoveryPassword/RecoveryPassword.module.scss";
+import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForAuth";
 import variables from "@/styles/variables.module.scss";
 
-import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForAuth/ContainerForAuth";
+import {ContainerForAuth} from "@/components/auth/recoveryPassword/containerForAuth/ContainerForAuth";
 import {useForm} from "react-hook-form";
-import CustomLink from "@/components/Auth/RecoveryPassword/Link/Link";
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import CustomLink from "@/components/auth/recoveryPassword/link/Link";
+import ButtonBlue from "@/components/recoveryPassword/Button/ButtonBlue";
 
 const SendLinkAgain = () => {
   const [token, setToken] = useState<string>('')
@@ -70,7 +70,7 @@ const SendLinkAgain = () => {
         <div style={{marginBottom: '30px'}}>
           <ButtonBlue
             disabled={false}
-            title={'Send Link Again'}
+            title={'Send link Again'}
             width={'100%'}
             type={'submit'}
           />

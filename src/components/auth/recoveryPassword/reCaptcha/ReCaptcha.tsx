@@ -1,5 +1,5 @@
 import ReCAPTCHA from "react-google-recaptcha"
-import s from 'src/components/Auth/RecoveryPassword/ReCaptcha/ReCaptcha.module.scss'
+import s from 'src/components/auth/recoveryPassword/reCaptcha/ReCaptcha.module.scss'
 
 
 interface Props {

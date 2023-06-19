@@ -1,13 +1,13 @@
 import React from 'react';
-import {ContainerForAuth} from "@/components/Auth/RecoveryPassword/ContainerForAuth/ContainerForAuth";
-import TitleForAuth from "@/components/Auth/RecoveryPassword/TitleForAuth/TitleForAuth";
+import {ContainerForAuth} from "@/components/auth/recoveryPassword/containerForAuth/ContainerForAuth";
+import TitleForAuth from "@/components/auth/recoveryPassword/titleForAuth/TitleForAuth";
 import variables from "@/styles/variables.module.scss";
-import TextForAuth from "@/components/Auth/RecoveryPassword/TextForAuth/TextForAuth";
+import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForAuth";
 
 import Image from "next/image";
 import resendImg from 'src/assets/img/auth/recent-link.png'
 import Link from "next/link";
-import ButtonBlue from "@/components/RecoveryPassword/Button/ButtonBlue";
+import ButtonBlue from "@/components/recoveryPassword/Button/ButtonBlue";
 
 const InvalidLink = () => {
 
@@ -24,7 +24,7 @@ const InvalidLink = () => {
         <Link href={'/recovery-password'} style={{display:"block",marginBottom: '31px',width:'100%'}}>
           <ButtonBlue
             disabled={false}
-            title={'Resend Link'}
+            title={'Resend link'}
             width={'100%'}
             type={'button'}
           />

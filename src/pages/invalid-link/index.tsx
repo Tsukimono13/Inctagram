@@ -1,6 +1,6 @@
 import React from 'react';
-import {getLayout} from "@/components/Layout/Layout";
-import InvalidLink from "@/components/Auth/RecoveryPassword/InvalidLink/InvalidLink";
+import {getLayout} from "@/components/layout/Layout";
+import InvalidLink from "@/components/auth/recoveryPassword/invalidLink/InvalidLink";
 
 
 const Index = () => <InvalidLink/>

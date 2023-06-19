@@ -1,5 +1,5 @@
 
-import { LayoutWithBar } from "@/components/Layout/LayoutWithBar/LayoutWithBar";
+import { LayoutWithBar } from "@/components/layout/layoutWithBar/LayoutWithBar";
 import { ReactElement } from "react";
 import ProfilePage from "@/components/profile/ProfilePage";
 

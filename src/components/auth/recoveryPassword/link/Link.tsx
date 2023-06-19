@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import s from "src/components/Auth/RecoveryPassword/Link/Link.module.scss";
+import s from "src/components/auth/recoveryPassword/link/Link.module.scss";
 import Link from "next/link";
 
 type PropsType = {
