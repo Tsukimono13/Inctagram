@@ -1,13 +1,14 @@
+import Image from "next/image";
 import s from "@/components/ProfileSettings/ProfileSettings.module.scss";
 import {Box, Button, FormControl, Stack, TextField} from "@mui/material";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {firstLastNameValidation} from "@/components/ProfileSettings/validation";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import {DesktopDatePicker} from "@mui/x-date-pickers";
-import {useForm} from "react-hook-form";
+import {DatePicker, DesktopDatePicker} from "@mui/x-date-pickers";
+import {Controller, useForm} from "react-hook-form";
 import {useGetProfileMutation, UserProfileType, useUpdateProfileMutation} from "@/services/authApi/authApi";
-import icon from '../../assets/img/profileSettings/photoIcon.png'
+import photoIcon from '../../assets/img/profileSettings/Vector.svg'
 
 type FormData = {
     userName: string
@@ -45,101 +46,113 @@ export const GeneralInformation = () => {
     const changePhotoHandler = () => {
 
     }
+    return (
+        <div className={s.content}>
+            <Stack className={s.photoContainer}>
+                <Box className={s.UserPhoto}>
+                    <button className={s.img}>
+                        <Image onClick={changePhotoHandler} src={photoIcon} alt={'photoIcon'}/>
+                    </button>
 
-    const theme = createTheme({
-        palette: {
-            primary: {
-                main: '#397DF6'
-            },
-            secondary: {
-                main: '#f1c02b',
-            },
-        },
-    });
+                    <Button sx={{
+                        marginTop: '20px',
+                        border: "1px solid "
+                    }} variant="outlined" onClick={changePhotoHandler}>Add a profile Photo</Button>
 
-   return(
-       <div className={s.content}>
-           <Stack className={s.photoContainer}>
-               <Box className={s.UserPhoto}>
-                   <button onClick={changePhotoHandler} className={s.img}>
-                       <img  className={s.icon}/>
-                   </button>
+                </Box>
+            </Stack>
+            <div className={s.userInformation}>
+                <form onSubmit={onSubmit}>
+                    <FormControl sx={{width: 494}}>
+                        <Stack spacing={1}>
+                            <TextField
+                                id="userName"
+                                label="Username"
+                                variant="standard"
+                                {...register("userName")} />
+                            <TextField
+                                id="firstName"
+                                label="First Name"
+                                variant="standard"
 
-                   <Button sx={{
-                       marginTop: '20px',
-                       border: "1px solid "
-                   }} variant="outlined" onClick={changePhotoHandler}>Add a profile Photo</Button>
+                                {...register("firstName", firstLastNameValidation)} />
+                            <TextField
+                                id="lastName"
+                                label="Last Name"
+                                variant="standard"
 
-               </Box>
-           </Stack>
-           <div className={s.userInformation}>
-               <form onSubmit={onSubmit}>
-                   <FormControl sx={{width: 494}}>
-                       <Stack spacing={1}>
-                           <ThemeProvider theme={theme}>
-                               <TextField
-                                   id="userName"
-                                   label="Username"
-                                   variant="standard"
-                                   {...register("userName")} />
-                               <TextField
-                                   id="firstName"
-                                   label="First Name"
-                                   variant="standard"
+                                {...register("lastName", firstLastNameValidation)} />
+                            <Box sx={{
+                                display: 'flex',
+                                justifyContent: 'left',
+                            }}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
+                                    <DesktopDatePicker
+                                        label="Date of birthday"
+                                        format="DD.MM.YYYY"
+                                        // value={value}
+                                        // onChange={(newValue) => setValue(newValue)}
+                                    />
+                                </LocalizationProvider>
+                                {/*<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">*/}
+                                {/*    <Controller*/}
+                                {/*        name="dateOfBirth"*/}
+                                {/*        control={control}*/}
+                                {/*        rules={{ required: 'Date of Birth is required' }}*/}
+                                {/*        render={({ field }) => (*/}
+                                {/*            <DatePicker*/}
+                                {/*                {...field}*/}
+                                {/*                label="Date of Birth"*/}
+                                {/*                value={field.value}*/}
+                                {/*                onChange={(newValue) => {*/}
+                                {/*                    field.onChange(newValue);*/}
+                                {/*                }}*/}
+                                {/*                renderInput={(params) => (*/}
+                                {/*                    <TextField*/}
+                                {/*                        {...params}*/}
+                                {/*                        variant="outlined"*/}
+                                {/*                        error={!!errors.dateOfBirth}*/}
+                                {/*                        helperText={errors.dateOfBirth?.message}*/}
+                                {/*                    />*/}
+                                {/*                )}*/}
+                                {/*            />*/}
+                                {/*        )}*/}
+                                {/*    />*/}
+                                {/*</LocalizationProvider>*/}
+                            </Box>
+                            <TextField
+                                id="city"
+                                label="City"
+                                variant="standard"
 
-                                   {...register("firstName", firstLastNameValidation)} />
-                               <TextField
-                                   id="lastName"
-                                   label="Last Name"
-                                   variant="standard"
+                                {...register("city")} />
+                            <TextField
+                                id="aboutMe"
+                                label="About me"
+                                multiline
+                                rows={3}
+                                defaultValue="Text-area"
+                                {...register("aboutMe")}
+                            />
 
-                                   {...register("lastName", firstLastNameValidation)} />
-                               <Box sx={{
-                                   display: 'flex',
-                                   justifyContent: 'left',
-                               }}>
-                                   <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
-                                       <DesktopDatePicker
-                                           label="Date of birthday"
-                                           format="DD.MM.YYYY"
-                                           // value={value}
-                                           // onChange={(newValue) => setValue(newValue)}
-                                       />
-                                   </LocalizationProvider>
-                               </Box>
-                               <TextField
-                                   id="city"
-                                   label="City"
-                                   variant="standard"
-
-                                   {...register("city")} />
-                               <TextField
-                                   id="aboutMe"
-                                   label="About me"
-                                   multiline
-                                   rows={3}
-                                   defaultValue="Text-area"
-                                   {...register("aboutMe")}
-                               />
-                           </ThemeProvider>
-                       </Stack>
-                       <Box sx={{
-                           display: 'flex',
-                           justifyContent: 'right'
-                       }}>
-                           <Button sx={{
-                               marginTop: '20px'
-                           }}
-                                   type="submit"
-                                   variant="contained"
-                                   disabled={!isValid}
-                           >
-                               Save Changes
-                           </Button>
-                       </Box>
-                   </FormControl>
-               </form>
-           </div>
-       </div>
-   )
+                        </Stack>
+                        <Box sx={{
+                            display: 'flex',
+                            justifyContent: 'right'
+                        }}>
+                            <Button sx={{
+                                marginTop: '20px'
+                            }}
+                                    type="submit"
+                                    variant="contained"
+                                    disabled={!isValid}
+                            >
+                                Save Changes
+                            </Button>
+                        </Box>
+                    </FormControl>
+                </form>
+            </div>
+        </div>
+    )
 }

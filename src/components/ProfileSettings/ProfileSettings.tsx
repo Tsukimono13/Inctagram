@@ -18,6 +18,8 @@ type SettingsInformationType = {
 
 }
 
+
+
 export const ProfileSettings = () => {
 
         const settingsInformation: SettingsInformationType[] = [
@@ -26,18 +28,16 @@ export const ProfileSettings = () => {
             {id: 2, settingName: 'Account Management'},
             {id: 3, settingName: 'My payments'},
         ]
-        const [optionsIsActive,setOptionsIsActive] = useState(0)
+        const [optionsIsActive, setOptionsIsActive] = useState(0)
 
 
         const isSignedIn = useAppSelector(signedIn)
         const router = useRouter()
 
 
-
-    const changeSettingOptions = (id: number) => {
-        setOptionsIsActive(id)
-    }
-
+        const changeSettingOptions = (id: number) => {
+            setOptionsIsActive(id)
+        }
 
 
         return (
@@ -55,7 +55,10 @@ export const ProfileSettings = () => {
                     >
                         {settingsInformation.map(s => {
                             return <Button
-                                key={s.id} onClick={() => changeSettingOptions(s.id)}>{s.settingName}</Button>
+                                key={s.id}
+                                onClick={() => changeSettingOptions(s.id)}>
+                                {s.settingName}
+                            </Button>
                         })}
                     </Box>
 
@@ -72,6 +75,6 @@ export const ProfileSettings = () => {
 
 const Button = styled.button`
   font-size: 16px;
-  color: #4C4C4C;  
+  color: #4C4C4C;
 `
 
