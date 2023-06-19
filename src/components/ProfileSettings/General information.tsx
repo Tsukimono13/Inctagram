@@ -7,6 +7,7 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DesktopDatePicker} from "@mui/x-date-pickers";
 import {useForm} from "react-hook-form";
 import {useGetProfileMutation, UserProfileType, useUpdateProfileMutation} from "@/services/authApi/authApi";
+import icon from '../../assets/img/profileSettings/photoIcon.png'
 
 type FormData = {
     userName: string
@@ -61,7 +62,7 @@ export const GeneralInformation = () => {
            <Stack className={s.photoContainer}>
                <Box className={s.UserPhoto}>
                    <button onClick={changePhotoHandler} className={s.img}>
-                       <div className={s.icon}></div>
+                       <img  className={s.icon}/>
                    </button>
 
                    <Button sx={{
