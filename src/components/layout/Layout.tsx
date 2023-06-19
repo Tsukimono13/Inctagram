@@ -1,6 +1,6 @@
 import {NextPage} from "next";
 import { PropsWithChildren, ReactElement, ReactNode } from "react";
-import {Header} from "../Header/Header";
+import {Header} from "@/components/header/Header";
 import s from './layout.module.css'
 
 
