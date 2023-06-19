@@ -2,7 +2,6 @@ import React from "react";
 import s from "src/components/Header/header.module.scss";
 import Link from "next/link";
 
-
 const HeaderProfile = () => {
   return (
     <div className={s.headerProfile}>
