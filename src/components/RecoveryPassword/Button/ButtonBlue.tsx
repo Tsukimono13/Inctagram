@@ -21,6 +21,7 @@ const ButtonBlue: FC<PropsType> = ({title, width, disabled, type, callback}) => 
       type={type}
       className={s.button}
     >
+
       {title}
     </button>
   );
