@@ -54,11 +54,13 @@ export const ProfileSettings = () => {
 
                     >
                         {settingsInformation.map(s => {
-                            return <Button
+                            return <button
+                                style={{fontSize: '16px',
+                                    color: '#4C4C4C'}}
                                 key={s.id}
                                 onClick={() => changeSettingOptions(s.id)}>
                                 {s.settingName}
-                            </Button>
+                            </button>
                         })}
                     </Box>
 
@@ -73,8 +75,5 @@ export const ProfileSettings = () => {
     }
 ;
 
-const Button = styled.button`
-  font-size: 16px;
-  color: #4C4C4C;
-`
+
 
