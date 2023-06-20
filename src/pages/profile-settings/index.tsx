@@ -1,5 +1,5 @@
-import {getLayout} from "@/components/Layout/Layout";
-import {LayoutWithBar} from "@/components/Layout/LayoutWithBar/LayoutWithBar";
+import {getLayout} from "@/components/layout/Layout";
+import {LayoutWithBar} from "@/components/layout/layoutWithBar/LayoutWithBar";
 
 const Index = () => <LayoutWithBar/>
 

@@ -1,5 +1,5 @@
-import {getLayout} from "@/components/Layout/Layout";
-import {SignInForm} from "@/components/Auth/SignInForm/SignInForm";
+import {getLayout} from "@/components/layout/Layout";
+import {SignInForm} from "@/components/auth/signInForm/SignInForm";
 import React from "react";
 
 

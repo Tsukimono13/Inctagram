@@ -1,0 +1,66 @@
+@import "src/styles/variables.module";
+.container {
+  display: flex;
+  padding: 35px 64px 53px 24px;
+
+  .profileImg {
+    width: 204px;
+    height: 204px;
+    border-radius: 50%;
+    background: #dacae7;
+  }
+
+
+  .profileInfoBox {
+    padding-left: 38px;
+    position: relative;
+
+    .userName {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 36px;
+    }
+
+    .profileSettingsButton {
+      background: $white-color;
+      border-radius: 2px;
+      padding: 6px 24px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      color: #000000;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  .subscriptions {
+    display: flex;
+    gap: 72px;
+    padding-top: 20px;
+    padding-bottom: 23px;
+  }
+
+  .status {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-left: 24px;
+  padding-bottom: 24px;
+
+  .contentImg {
+    width: 234px;
+    height: 228px;
+    background: #656060;
+  }
+}

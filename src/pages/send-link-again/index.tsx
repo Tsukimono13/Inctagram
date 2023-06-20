@@ -1,6 +1,6 @@
 import React from 'react';
-import {getLayout} from "@/components/Layout/Layout";
-import SendLinkAgain from "@/components/Auth/RecoveryPassword/SendLinkAgain/SendLinkAgain";
+import {getLayout} from "@/components/layout/Layout";
+import SendLinkAgain from "@/components/auth/recoveryPassword/sendLinkAgain/SendLinkAgain";
 
 const Index = () => <SendLinkAgain/>
 

@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import {getLayout} from "@/components/Layout/Layout";
+import {getLayout} from "@/components/layout/Layout";
 import {useRouter} from "next/router";
 import {useRegistrationConfirmationMutation} from "@/services/authApi/authApi";
 import Image from "next/image";
 import regConfirmImg from '../../../assets/img/auth/regConfirmImg.png'
-import {ContainerForConfirm} from "@/components/Auth/RegistrationConfirmation/ContainerForConfirm/ContainerForConfirm";
-import CustomButton from "@/components/CustomComponents/CustomButton/CustomButton";
+import {ContainerForConfirm} from "@/components/auth/registrationConfirmation/containerForConfirm/ContainerForConfirm";
+import CustomButton from "@/components/customComponents/customButton/CustomButton";
 
 const RegistrationConfirmation = () => {
 
