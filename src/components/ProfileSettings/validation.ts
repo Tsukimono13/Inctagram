@@ -12,7 +12,8 @@ export const firstLastNameValidation ={
 }
 
 
-export const passwordValidation ={
+
+ export const passwordValidation ={
     required: 'This field is required',
     minLength: {
         value: 6,
