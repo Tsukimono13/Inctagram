@@ -15,7 +15,6 @@
     width: 726px;
     color: #BDC1C7;
 
-
     .content {
       display: flex;
       flex-direction: row;
@@ -29,6 +28,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+
           .img {
             display: flex;
             justify-content: center;
@@ -37,15 +37,6 @@
             width: 192px;
             height: 192px;
             background: $dark;
-            .icon{
-              border-radius: 5px 5px 5px 5px;
-              background: white;
-              width: 48px;
-              height: 48px;
-
-
-            }
-
           }
 
           .button {
@@ -59,7 +50,9 @@
       .userInformation {
 
       }
-      .devices{}
+
+      .devices {
+      }
     }
 
   }
