@@ -5,10 +5,10 @@ import {useRouter} from "next/router";
 import s from "./ProfileSettings.module.scss"
 import {Box} from "@mui/material";
 import {useState} from "react";
-import {GeneralInformation} from "@/components/ProfileSettings/General information";
-import {Devises} from "@/components/ProfileSettings/Devises";
-import {AccountManagement} from "@/components/ProfileSettings/AccountManagement";
-import {MyPayments} from "@/components/ProfileSettings/MyPayments";
+import {GeneralInformation} from "@/components/profileSettings/GeneralInformation";
+import {Devises} from "@/components/profileSettings/Devises";
+import {AccountManagement} from "@/components/profileSettings/AccountManagement";
+import {MyPayments} from "@/components/profileSettings/MyPayments";
 import styled from "styled-components";
 
 
@@ -46,7 +46,7 @@ export const ProfileSettings = () => {
                 <div className={s.container}>
                     <Box
                         sx={{
-                            borderBottom: '2px solid #4C4C4C',
+                            borderBottom: '1px solid #4C4C4C',
                             display: 'flex',
                             flexWrap: 'nowrap',
                             justifyContent: 'space-evenly',

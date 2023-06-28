@@ -1,8 +1,15 @@
-import {getLayout} from "@/components/layout/Layout";
 import {LayoutWithBar} from "@/components/layout/layoutWithBar/LayoutWithBar";
+import {ProfileSettings} from "@/components/profileSettings/ProfileSettings";
+import {ReactElement} from "react";
 
-const Index = () => <LayoutWithBar/>
+const Index = () => <ProfileSettings/>
 
-Index.getLayout = getLayout
+Index.getLayout = function getLayout(page: ReactElement) {
+    return (
+        <LayoutWithBar>
+            {page}
+        </LayoutWithBar>
+    );
+};
 
 export default Index

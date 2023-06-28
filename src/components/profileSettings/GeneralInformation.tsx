@@ -1,14 +1,14 @@
 import Image from "next/image";
 import s from "@/components/ProfileSettings/ProfileSettings.module.scss";
 import {Box, Button, FormControl, Stack, TextField} from "@mui/material";
-import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {firstLastNameValidation} from "@/components/ProfileSettings/validation";
+import {firstLastNameValidation} from "@/components/profileSettings/validation";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import {DatePicker, DesktopDatePicker} from "@mui/x-date-pickers";
-import {Controller, useForm} from "react-hook-form";
+import {DesktopDatePicker} from "@mui/x-date-pickers";
+import {useForm} from "react-hook-form";
 import {useGetProfileMutation, UserProfileType, useUpdateProfileMutation} from "@/services/authApi/authApi";
 import photoIcon from '../../assets/img/profileSettings/Vector.svg'
+import styled from "styled-components";
 
 type FormData = {
     userName: string
@@ -156,3 +156,7 @@ export const GeneralInformation = () => {
         </div>
     )
 }
+
+const NewTextField = styled(TextField)`
+    border-bottom: white;
+`
