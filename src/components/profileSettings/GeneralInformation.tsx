@@ -3,18 +3,18 @@ import s from "@/components/ProfileSettings/ProfileSettings.module.scss";
 import {Box, Button, FormControl, Stack, TextField} from "@mui/material";
 import {firstLastNameValidation} from "@/components/profileSettings/validation";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import {DesktopDatePicker} from "@mui/x-date-pickers";
-import {useForm} from "react-hook-form";
+import {DatePicker} from "@mui/x-date-pickers";
+import {Controller, useForm} from "react-hook-form";
 import {useGetProfileMutation, UserProfileType, useUpdateProfileMutation} from "@/services/authApi/authApi";
 import photoIcon from '../../assets/img/profileSettings/Vector.svg'
-import styled from "styled-components";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+
 
 type FormData = {
     userName: string
     firstName: string
     lastName: string
-    date: string
+    date: Date | null
     city: string
     aboutMe: string
 };
@@ -26,13 +26,13 @@ export const GeneralInformation = () => {
     const updateProfile = useUpdateProfileMutation()
 
 
-    const {register, setValue, handleSubmit, formState: {errors, isValid}} = useForm<FormData>({
+    const {control,handleSubmit, formState: {errors, isValid}} = useForm<FormData>({
         mode: "onTouched" || "onBlur" || "onChange",
         defaultValues: {
             userName: '',
             firstName: '',
             lastName: '',
-            date: '',
+            date: null,
             aboutMe: '',
             city: ''
         }
@@ -65,83 +65,103 @@ export const GeneralInformation = () => {
                 <form onSubmit={onSubmit}>
                     <FormControl sx={{width: 494}}>
                         <Stack spacing={1}>
-                            <TextField
-                                id="userName"
-                                label="Username"
-                                variant="standard"
-                                {...register("userName")} />
-                            <TextField
-                                id="firstName"
-                                label="First Name"
-                                variant="standard"
-
-                                {...register("firstName", firstLastNameValidation)} />
-                            <TextField
-                                id="lastName"
-                                label="Last Name"
-                                variant="standard"
-
-                                {...register("lastName", firstLastNameValidation)} />
+                            <Controller
+                                name="userName"
+                                control={control}
+                                rules={{required: 'Username is required'}}
+                                render={({field}) => (
+                                    <TextField
+                                        {...field}
+                                        label="User Name"
+                                        variant="outlined"
+                                        error={!!errors.userName}
+                                        helperText={errors.userName?.message}
+                                    />
+                                )}
+                            />
+                            <Controller
+                                name="firstName"
+                                control={control}
+                                rules={firstLastNameValidation}
+                                render={({field}) => (
+                                    <TextField
+                                        {...field}
+                                        label="First Name"
+                                        variant="outlined"
+                                        error={!!errors.firstName}
+                                        helperText={errors.firstName?.message}
+                                    />
+                                )}
+                            />
+                            <Controller
+                                name="lastName"
+                                control={control}
+                                rules={firstLastNameValidation}
+                                render={({field}) => (
+                                    <TextField
+                                        {...field}
+                                        label="Last Name"
+                                        variant="outlined"
+                                        error={!!errors.lastName}
+                                        helperText={errors.lastName?.message}
+                                    />
+                                )}
+                            />
                             <Box sx={{
                                 display: 'flex',
                                 justifyContent: 'left',
                             }}>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
-                                    <DesktopDatePicker
-                                        label="Date of birthday"
-                                        format="DD.MM.YYYY"
-                                        // value={value}
-                                        // onChange={(newValue) => setValue(newValue)}
+                                    <Controller
+                                        name="date"
+                                        control={control}
+                                        render={({field}) => (
+                                            <DatePicker
+                                                {...field}
+                                                label="Date of Birth"
+                                                value={field.value}
+                                                format="DD.MM.YYYY"
+                                                onChange={(newValue) => {
+                                                    field.onChange(newValue);
+                                                }}
+                                            />
+                                        )}
                                     />
                                 </LocalizationProvider>
-                                {/*<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">*/}
-                                {/*    <Controller*/}
-                                {/*        name="dateOfBirth"*/}
-                                {/*        control={control}*/}
-                                {/*        rules={{ required: 'Date of Birth is required' }}*/}
-                                {/*        render={({ field }) => (*/}
-                                {/*            <DatePicker*/}
-                                {/*                {...field}*/}
-                                {/*                label="Date of Birth"*/}
-                                {/*                value={field.value}*/}
-                                {/*                onChange={(newValue) => {*/}
-                                {/*                    field.onChange(newValue);*/}
-                                {/*                }}*/}
-                                {/*                renderInput={(params) => (*/}
-                                {/*                    <TextField*/}
-                                {/*                        {...params}*/}
-                                {/*                        variant="outlined"*/}
-                                {/*                        error={!!errors.dateOfBirth}*/}
-                                {/*                        helperText={errors.dateOfBirth?.message}*/}
-                                {/*                    />*/}
-                                {/*                )}*/}
-                                {/*            />*/}
-                                {/*        )}*/}
-                                {/*    />*/}
-                                {/*</LocalizationProvider>*/}
                             </Box>
-                            <TextField
-                                id="city"
-                                label="City"
-                                variant="standard"
-
-                                {...register("city")} />
-                            <TextField
-                                id="aboutMe"
-                                label="About me"
-                                multiline
-                                rows={3}
-                                defaultValue="Text-area"
-                                {...register("aboutMe")}
+                            <Controller
+                                name="city"
+                                control={control}
+                                render={({field}) => (
+                                    <TextField
+                                        {...field}
+                                        label="City"
+                                        variant="outlined"
+                                    />
+                                )}
                             />
-
+                            <Controller
+                                name="aboutMe"
+                                control={control}
+                                render={({field}) => (
+                                    <TextField
+                                        {...field}
+                                        label="About me"
+                                        multiline
+                                        rows={3}
+                                        variant="outlined"
+                                    />
+                                )}
+                            />
                         </Stack>
                         <Box sx={{
                             display: 'flex',
-                            justifyContent: 'right'
+                            justifyContent: 'right',
                         }}>
+
                             <Button sx={{
                                 marginTop: '20px'
+
                             }}
                                     type="submit"
                                     variant="contained"
@@ -157,6 +177,3 @@ export const GeneralInformation = () => {
     )
 }
 
-const NewTextField = styled(TextField)`
-    border-bottom: white;
-`
