@@ -22,11 +22,11 @@ export const Header = () => {
         localStorage.removeItem('token')
     }
 
-    useEffect(() => {
-
-        isSignedIn ? router.push('/profile') : router.push('/signIn')
-
-    }, [isSignedIn])
+    // useEffect(() => {
+    //
+    //     isSignedIn ? router.push('/profile') : router.push('/signIn')
+    //
+    // }, [isSignedIn])
 
 
     return (

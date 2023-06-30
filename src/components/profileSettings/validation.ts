@@ -5,8 +5,8 @@ export const firstLastNameValidation ={
         message: 'Username cannot have less than 6 characters'
     },
     maxLength: {
-        value: 20,
-        message: 'Username cannot exceed 20 charact' +
+        value: 30,
+        message: 'Username cannot exceed 30 charact' +
             'ers'
     },
 }

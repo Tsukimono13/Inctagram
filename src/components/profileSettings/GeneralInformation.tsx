@@ -5,9 +5,14 @@ import {firstLastNameValidation} from "@/components/profileSettings/validation";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import {DatePicker} from "@mui/x-date-pickers";
 import {Controller, useForm} from "react-hook-form";
-import {useGetProfileMutation, UserProfileType, useUpdateProfileMutation} from "@/services/authApi/authApi";
+import {
+    useGetProfileQuery,
+    UserProfileType,
+    useUpdateProfileMutation
+} from "@/services/authApi/authApi";
 import photoIcon from '../../assets/img/profileSettings/Vector.svg'
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import variables from "*.module.scss";
 
 
 type FormData = {
@@ -22,12 +27,12 @@ type FormData = {
 
 export const GeneralInformation = () => {
 
-    const userProfile = useGetProfileMutation<UserProfileType>()
-    const updateProfile = useUpdateProfileMutation()
+    const {data:userName,isLoading,isFetching,isError,error} = useGetProfileQuery()
+    const [updateProfile] = useUpdateProfileMutation()
 
 
     const {control,handleSubmit, formState: {errors, isValid}} = useForm<FormData>({
-        mode: "onTouched" || "onBlur" || "onChange",
+        mode: "onChange",
         defaultValues: {
             userName: '',
             firstName: '',
@@ -38,7 +43,7 @@ export const GeneralInformation = () => {
         }
     });
     const onSubmit = handleSubmit(data => {
-        // updateProfile(data)
+        updateProfile(data)
         console.log(data)
         alert(JSON.stringify(data))
     })
@@ -46,6 +51,11 @@ export const GeneralInformation = () => {
     const changePhotoHandler = () => {
 
     }
+
+    if (isLoading) {
+        return <div></div>
+    }
+
     return (
         <div className={s.content}>
             <Stack className={s.photoContainer}>
@@ -86,6 +96,7 @@ export const GeneralInformation = () => {
                                 render={({field}) => (
                                     <TextField
                                         {...field}
+
                                         label="First Name"
                                         variant="outlined"
                                         error={!!errors.firstName}

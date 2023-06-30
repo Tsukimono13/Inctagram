@@ -123,13 +123,13 @@ export const authApi = createApi({
                 method:'GET'
             })
         }),
-        getProfile:builder.mutation<UserProfileType,void>({
+        getProfile:builder.query<UserProfileType,void>({
             query:()=>({
                 url:'users/profile',
-                method:'GET'
+
             })
         }),
-        updateProfile:builder.mutation<any,any>({
+        updateProfile:builder.mutation<UserProfileType,UserProfileType>({
             query:(body)=>({
                 url:'users/profile',
                 method:'PUT',
@@ -141,8 +141,7 @@ export const authApi = createApi({
 });
 
 export const {useSignInMutation,useUpdateProfileMutation,
-    useLogOutMutation, useRegistrationMutation,
-    useUserQuery,useGetProfileMutation,
+    useLogOutMutation, useRegistrationMutation, useUserQuery,useGetProfileQuery,
     useForgotPasswordMutation,useCreateNewPasswordMutation,
     useCheckRecoveryCodeMutation,useRegistrationConfirmationMutation} = authApi;
 
