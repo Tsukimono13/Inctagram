@@ -1,56 +1,14 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {settings} from "@/settings";
-
-export type RecoveryPasswordType={
-    email: string
-    recaptcha: string
-}
-export type NewPasswordType={
-    newPassword: string,
-    recoveryCode: string
-}
-export type RegistrationType = {
-    userName: string
-    email: string
-    password: string
-}
-
-export type LoginType = Omit<RegistrationType, 'userName'>
-
-type LoginResponseType = {
-    accessToken: string
-}
-
-type RegistrationConfirmation = {
-    confirmationCode: string[]
-}
+import {
+    LoginResponseType,
+    LoginType,
+    NewPasswordType, RecoveryPasswordType,
+    RegistrationConfirmation,
+    RegistrationType, RequestBodyType, UserProfileType, UserType
+} from "@/services/authApi/types";
 
 
-export type UserType = {
-    userId: number
-    userName: string
-    email: string
-}
-
-type AvatarsType = {
-    url: string,
-    width: number,
-    height: number,
-    fileSize: number
-}
-
-
-
-export type UserProfileType = {
-    id: number,
-    userName: string,
-    firstName: string,
-    lastName: string,
-    city: string,
-    dateOfBirth: Date,
-    aboutMe: string,
-    avatars: AvatarsType[]
-}
 
 export const authApi = createApi({
     reducerPath: 'authApi',
@@ -129,7 +87,7 @@ export const authApi = createApi({
 
             })
         }),
-        updateProfile:builder.mutation<UserProfileType,UserProfileType>({
+        updateProfile:builder.mutation<UserProfileType,RequestBodyType>({
             query:(body)=>({
                 url:'users/profile',
                 method:'PUT',

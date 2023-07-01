@@ -5,24 +5,11 @@ import {firstLastNameValidation} from "@/components/profileSettings/validation";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import {DatePicker} from "@mui/x-date-pickers";
 import {Controller, useForm} from "react-hook-form";
-import {
-    useGetProfileQuery,
-    UserProfileType,
-    useUpdateProfileMutation
-} from "@/services/authApi/authApi";
+import {RequestBodyType, useGetProfileQuery, useUpdateProfileMutation} from "@/services/authApi/authApi";
 import photoIcon from '../../assets/img/profileSettings/Vector.svg'
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import variables from "*.module.scss";
 
 
-type FormData = {
-    userName: string
-    firstName: string
-    lastName: string
-    date: Date | null
-    city: string
-    aboutMe: string
-};
 
 
 export const GeneralInformation = () => {
@@ -31,13 +18,13 @@ export const GeneralInformation = () => {
     const [updateProfile] = useUpdateProfileMutation()
 
 
-    const {control,handleSubmit, formState: {errors, isValid}} = useForm<FormData>({
+    const {control,handleSubmit, formState: {errors, isValid}} = useForm<RequestBodyType>({
         mode: "onChange",
         defaultValues: {
             userName: '',
             firstName: '',
             lastName: '',
-            date: null,
+            dateOfBirth: null,
             aboutMe: '',
             city: ''
         }
@@ -124,7 +111,7 @@ export const GeneralInformation = () => {
                             }}>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
                                     <Controller
-                                        name="date"
+                                        name="dateOfBirth"
                                         control={control}
                                         render={({field}) => (
                                             <DatePicker

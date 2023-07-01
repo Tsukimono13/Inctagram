@@ -1,7 +1,4 @@
 'use client'
-import {useAppSelector} from "@/hooks/useAppSelector";
-import {signedIn} from "@/features/authReducer/authSelectors";
-import {useRouter} from "next/router";
 import s from "./ProfileSettings.module.scss"
 import {Box} from "@mui/material";
 import {useState} from "react";
@@ -9,20 +6,18 @@ import {GeneralInformation} from "@/components/profileSettings/GeneralInformatio
 import {Devises} from "@/components/profileSettings/Devises";
 import {AccountManagement} from "@/components/profileSettings/AccountManagement";
 import {MyPayments} from "@/components/profileSettings/MyPayments";
-import styled from "styled-components";
-
-
-type SettingsInformationType = {
-    id: number
-    settingName: string,
-
-}
-
+import {useSelector} from "react-redux";
+import {signedIn} from "@/features/authReducer/authSelectors";
+import {useRouter} from "next/router";
+import {RootStateType} from "@/services/store";
 
 
 export const ProfileSettings = () => {
 
-        const settingsInformation: SettingsInformationType[] = [
+        const isSignetIn = useSelector((state:RootStateType) => state.authReducer.isSignedIn)
+        const router = useRouter()
+
+        const settingsInformation = [
             {id: 0, settingName: 'General information'},
             {id: 1, settingName: 'Devises'},
             {id: 2, settingName: 'Account Management'},
@@ -30,15 +25,13 @@ export const ProfileSettings = () => {
         ]
         const [optionsIsActive, setOptionsIsActive] = useState(0)
 
-
-        const isSignedIn = useAppSelector(signedIn)
-        const router = useRouter()
-
-
         const changeSettingOptions = (id: number) => {
             setOptionsIsActive(id)
         }
 
+        if (!isSignetIn) {
+            router.push('/signIn')
+        }
 
         return (
             <div className={s.profileSettingsContainer}>
@@ -55,8 +48,10 @@ export const ProfileSettings = () => {
                     >
                         {settingsInformation.map(s => {
                             return <button
-                                style={{fontSize: '16px',
-                                    color: '#4C4C4C'}}
+                                style={{
+                                    fontSize: '16px',
+                                    color: '#4C4C4C'
+                                }}
                                 key={s.id}
                                 onClick={() => changeSettingOptions(s.id)}>
                                 {s.settingName}
