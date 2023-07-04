@@ -5,13 +5,14 @@ import {
     LoginType,
     NewPasswordType, RecoveryPasswordType,
     RegistrationConfirmation,
-    RegistrationType, RequestBodyType, UserProfileType, UserType
+    RegistrationType, RequestBodyType, ResponseUploadAvatar, UserProfileType, UserType
 } from "@/services/authApi/types";
 
 
 
 export const authApi = createApi({
     reducerPath: 'authApi',
+    tagTypes:["userProfile"],
     baseQuery: fetchBaseQuery(
         {
             baseUrl: settings.baseUrl,
@@ -84,8 +85,8 @@ export const authApi = createApi({
         getProfile:builder.query<UserProfileType,void>({
             query:()=>({
                 url:'users/profile',
-
-            })
+            }),
+            providesTags: ['userProfile'],
         }),
         updateProfile:builder.mutation<UserProfileType,RequestBodyType>({
             query:(body)=>({
@@ -94,13 +95,28 @@ export const authApi = createApi({
                 body
             })
         }),
+        uploadAvatar: builder.mutation<ResponseUploadAvatar, FormData>({
+            query: (body: FormData) => ({
+                url: 'users/profile/avatar',
+                method: 'POST',
+                body: body
+            }),
+            invalidatesTags:[{type:'userProfile'}]
+        }),
+        deleteAvatar: builder.mutation({
+            query: () => ({
+                url: 'users/profile/avatar',
+                method: 'DELETE',
+
+            })
+        })
 
     }),
 });
 
-export const {useSignInMutation,useUpdateProfileMutation,
+export const {useUploadAvatarMutation,useSignInMutation,useUpdateProfileMutation,
     useLogOutMutation, useRegistrationMutation, useUserQuery,useGetProfileQuery,
     useForgotPasswordMutation,useCreateNewPasswordMutation,
-    useCheckRecoveryCodeMutation,useRegistrationConfirmationMutation} = authApi;
+    useCheckRecoveryCodeMutation,useRegistrationConfirmationMutation,useDeleteAvatarMutation} = authApi;
 
 

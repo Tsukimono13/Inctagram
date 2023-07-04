@@ -29,7 +29,7 @@ export type UserType = {
     email: string
 }
 
-export type AvatarsType = {
+export type AvatarType = {
     url: string,
     width: number,
     height: number,
@@ -55,5 +55,8 @@ export type UserProfileType = {
     city: string,
     dateOfBirth: Date,
     aboutMe: string,
-    avatars: AvatarsType[]
+    avatars: AvatarType[]
+}
+export type ResponseUploadAvatar={
+    avatars:AvatarType[]
 }

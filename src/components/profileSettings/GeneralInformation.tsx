@@ -1,4 +1,3 @@
-import Image from "next/image";
 import s from "@/components/ProfileSettings/ProfileSettings.module.scss";
 import {Box, Button, FormControl, Stack, TextField} from "@mui/material";
 import {firstLastNameValidation} from "@/components/profileSettings/validation";
@@ -6,9 +5,10 @@ import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import {DatePicker} from "@mui/x-date-pickers";
 import {Controller, useForm} from "react-hook-form";
 import { useGetProfileQuery, useUpdateProfileMutation} from "@/services/authApi/authApi";
-import photoIcon from '../../assets/img/profileSettings/Vector.svg'
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {RequestBodyType} from "@/services/authApi/types";
+import UploadAvatar from "@/components/profileSettings/uploadAvatar/UploadAvatar";
+
 
 
 
@@ -36,9 +36,6 @@ export const GeneralInformation = () => {
         alert(JSON.stringify(data))
     })
 
-    const changePhotoHandler = () => {
-
-    }
 
     if (isLoading) {
         return <div></div>
@@ -46,19 +43,7 @@ export const GeneralInformation = () => {
 
     return (
         <div className={s.content}>
-            <Stack className={s.photoContainer}>
-                <Box className={s.UserPhoto}>
-                    <button className={s.img}>
-                        <Image onClick={changePhotoHandler} src={photoIcon} alt={'photoIcon'}/>
-                    </button>
-
-                    <Button sx={{
-                        marginTop: '20px',
-                        border: "1px solid "
-                    }} variant="outlined" onClick={changePhotoHandler}>Add a profile Photo</Button>
-
-                </Box>
-            </Stack>
+            <UploadAvatar/>
             <div className={s.userInformation}>
                 <form onSubmit={onSubmit}>
                     <FormControl sx={{width: 494}}>

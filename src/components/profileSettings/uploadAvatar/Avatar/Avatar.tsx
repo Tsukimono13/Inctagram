@@ -8,6 +8,7 @@ type Props = {
 }
 
 const Avatar = ({path}: Props) => {
+
   return (
     <div className={s.avatar}>
       {
