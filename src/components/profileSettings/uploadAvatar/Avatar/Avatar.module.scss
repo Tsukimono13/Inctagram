@@ -1,0 +1,18 @@
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #171717;
+  height: 192px;
+}
+
+.avatarImg {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.defaultAva {
+  display: block;
+}
