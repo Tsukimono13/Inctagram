@@ -30,7 +30,7 @@ export const ProfileSettings = () => {
         }
 
         if (!isSignetIn) {
-            router.push('/signIn')
+            // router.push('/signIn')
         }
 
         return (

@@ -1,9 +1,9 @@
 import React, {useRef} from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import s from "./Editor.module.scss";
-import ButtonBlue from "@/components/Buttons/ButtonBlue/ButtonBlue";
 import {ResponseUploadAvatar, useUploadAvatarMutation} from "@/services/profileApi/profileApi";
 import {convertCanvasToBinaryFile} from "@/common/utils/convert-canvas-to-binaryFile";
+import ButtonBlue from "@/components/auth/recoveryPassword/buttons/ButtonBlue/ButtonBlue";
 
 type Props = {
   preview: string

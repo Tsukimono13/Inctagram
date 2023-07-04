@@ -5,9 +5,10 @@ import {firstLastNameValidation} from "@/components/profileSettings/validation";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import {DatePicker} from "@mui/x-date-pickers";
 import {Controller, useForm} from "react-hook-form";
-import {RequestBodyType, useGetProfileQuery, useUpdateProfileMutation} from "@/services/authApi/authApi";
+import { useGetProfileQuery, useUpdateProfileMutation} from "@/services/authApi/authApi";
 import photoIcon from '../../assets/img/profileSettings/Vector.svg'
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import {RequestBodyType} from "@/services/authApi/types";
 
 
 

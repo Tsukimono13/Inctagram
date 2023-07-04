@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import Avatar from "@/components/Profile/UploadAvatar/Avatar/Avatar";
-import ButtonTransparent from "@/components/Buttons/ButtonTransparent/ButtonTransparent";
 import tempAva from '../../../assets/img/icons/face2.jpg'
 import s from './UploadAvatar.module.scss'
-import AddAvatarModalWindow from "@/components/Profile/UploadAvatar/AddAvatarModalWindow/AddAvatarModalWindow";
+import ButtonTransparent from "@/components/auth/recoveryPassword/buttons/ButtonTransparent/ButtonTransparent";
+import AddAvatarModalWindow from "@/components/profileSettings/uploadAvatar/AddAvatarModalWindow/AddAvatarModalWindow";
+import Avatar from "@/components/profileSettings/uploadAvatar/Avatar/Avatar";
 
 const UploadAvatar = () => {
 

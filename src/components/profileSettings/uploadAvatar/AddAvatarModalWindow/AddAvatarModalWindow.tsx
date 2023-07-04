@@ -5,8 +5,10 @@ import React, {ChangeEvent, useState} from "react";
 import {useRouter} from "next/router";
 import defaultAva from "@/assets/img/icons/picture.png";
 import Image from "next/image";
-import ButtonBlue from "@/components/Buttons/ButtonBlue/ButtonBlue";
-import Editor from "@/components/Profile/UploadAvatar/Editor/Editor";
+import Editor from "@/components/profileSettings/uploadAvatar/Editor/Editor";
+import ButtonBlue from "@/components/auth/recoveryPassword/buttons/ButtonBlue/ButtonBlue";
+
+
 
 type Props={
   showModal:(value:boolean)=>void
