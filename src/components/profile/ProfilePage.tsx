@@ -1,6 +1,7 @@
 import React from "react";
 import { useUserQuery } from "@/services/authApi/authApi";
 import s from "./profilePage.module.scss";
+import Link from "next/link";
 
 const ProfilePage = () => {
   const { data: user, isSuccess } = useUserQuery();
@@ -15,7 +16,7 @@ const ProfilePage = () => {
           <div className={s.userName}>
             {isSuccess ? user.userName : "User"}
           </div>
-          <button className={s.profileSettingsButton}>Profile Settings</button>
+          <button  className={s.profileSettingsButton}><Link href={'/profile-settings'}>Profile Settings</Link></button>
           <div className={s.subscriptions}>
             <p><strong>2 218</strong><br />Subscriptions</p>
             <p><strong>2 358</strong><br />Subscribers</p>
