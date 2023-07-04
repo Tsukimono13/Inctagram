@@ -4,11 +4,11 @@ import TextField from "@mui/material/TextField";
 import s from "@/components/auth/recoveryPassword/RecoveryPassword.module.scss";
 import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForAuth";
 import variables from "@/styles/variables.module.scss";
-
 import {ContainerForAuth} from "@/components/auth/recoveryPassword/containerForAuth/ContainerForAuth";
 import {useForm} from "react-hook-form";
 import CustomLink from "@/components/auth/recoveryPassword/link/Link";
-import ButtonBlue from "@/components/recoveryPassword/Button/ButtonBlue";
+import ButtonBlue from "@/components/auth/recoveryPassword/buttons/ButtonBlue/ButtonBlue";
+
 
 const SendLinkAgain = () => {
   const [token, setToken] = useState<string>('')

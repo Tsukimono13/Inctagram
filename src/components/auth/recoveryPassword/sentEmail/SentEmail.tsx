@@ -4,9 +4,9 @@ import s from "src/components/auth/recoveryPassword/sentEmail/SentEmail.module.s
 import CloseIcon from "@mui/icons-material/Close";
 import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForAuth";
 import variables from "src/styles/variables.module.scss";
-
 import { useRouter } from "next/router";
-import ButtonBlue from "@/components/recoveryPassword/Button/ButtonBlue";
+import ButtonBlue from "@/components/auth/recoveryPassword/buttons/ButtonBlue/ButtonBlue";
+
 
 const SentEmail = () => {
   const router = useRouter();

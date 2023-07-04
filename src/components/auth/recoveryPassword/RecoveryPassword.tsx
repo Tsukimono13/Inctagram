@@ -10,7 +10,8 @@ import {ContainerForAuth} from "@/components/auth/recoveryPassword/containerForA
 import {useForgotPasswordMutation} from "@/services/authApi/authApi";
 import {useRouter} from "next/router";
 import CustomLink from "@/components/auth/recoveryPassword/link/Link";
-import ButtonBlue from "@/components/recoveryPassword/Button/ButtonBlue";
+import ButtonBlue from "@/components/auth/recoveryPassword/buttons/ButtonBlue/ButtonBlue";
+
 
 
 const RecoveryPassword = () => {

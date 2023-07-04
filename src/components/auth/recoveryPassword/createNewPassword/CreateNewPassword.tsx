@@ -9,7 +9,7 @@ import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForA
 import variables from 'src/styles/variables.module.scss';
 import {useRouter} from "next/router";
 import {useCreateNewPasswordMutation,} from "@/services/authApi/authApi";
-import ButtonBlue from "@/components/recoveryPassword/Button/ButtonBlue";
+import ButtonBlue from "@/components/auth/recoveryPassword/buttons/ButtonBlue/ButtonBlue";
 
 
 const CreateNewPassword = () => {

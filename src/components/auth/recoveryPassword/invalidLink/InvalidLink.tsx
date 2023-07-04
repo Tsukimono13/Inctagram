@@ -7,7 +7,8 @@ import TextForAuth from "@/components/auth/recoveryPassword/textForAuth/TextForA
 import Image from "next/image";
 import resendImg from "src/assets/img/auth/recent-link.png";
 import Link from "next/link";
-import ButtonBlue from "@/components/recoveryPassword/Button/ButtonBlue";
+import ButtonBlue from "@/components/auth/recoveryPassword/buttons/ButtonBlue/ButtonBlue";
+
 
 const InvalidLink = () => {
 
