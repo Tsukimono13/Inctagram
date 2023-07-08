@@ -1,0 +1,31 @@
+.wrapper {
+    position: relative;
+    height: 500px;
+    width: 500px;
+}
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 59px;
+    border-bottom: 2px solid darkgrey;
+    padding: 12px;
+}
+
+.arrow {
+    cursor: pointer;
+}
+
+
+.btn {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    color: #73a5ff;
+}

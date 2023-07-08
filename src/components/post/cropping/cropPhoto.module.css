@@ -1,0 +1,65 @@
+.editPhoto {
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+    z-index: 9;
+    position: absolute;
+}
+
+.editButton {
+    display: flex;
+    position: relative;
+    bottom: 55px;
+    left: 20px;
+}
+.buttonChange {
+    cursor: pointer;
+    display: flex;
+    width: 36px;
+    height: 36px;
+    background:darkgrey;
+    opacity: 0.8;
+    border-radius: 2px;
+}
+
+.maxi {
+    margin-left: 20px;
+}
+
+
+.inp {
+    display: flex;
+    align-items: center;
+    width: 135px;
+    height: 40px;
+    background: darkgrey;
+    opacity: 0.8;
+    border-radius: 2px;
+    position: inherit;
+    bottom: 100px;
+    left: 75px;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    width: 156px;
+    height: 157px;
+    position: inherit;
+    bottom: 100px;
+    left: 20px;
+    background: darkgrey;
+    opacity: 0.8;
+    border-radius: 2px;
+}
+.modalMain {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+}
+.image {
+    width: 18px;
+    height: 18px;
+}
