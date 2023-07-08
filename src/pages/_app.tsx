@@ -6,6 +6,7 @@ import { store } from "@/services/store";
 import { useLoader } from "@/hooks/useLoader";
 import '../styles/nProgress.css'
 import { ReactElement, ReactNode } from "react";
+import {FileProvider} from "@/hooks/fileContext/FileContext";
 
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -23,6 +24,8 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <Provider store={store}>
-      {getLayout(<Component {...pageProps} />)}
+      <FileProvider>
+        {getLayout(<Component {...pageProps} />)}
+      </FileProvider>
     </Provider>);
 }
