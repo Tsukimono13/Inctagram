@@ -1,0 +1,47 @@
+.containerForTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 24px;
+    border: 1px solid #4C4C4C;
+}
+.img{
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 492px;
+    min-width: 492px;
+    border-radius: 2px;
+}
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 492px;
+    gap: 90px;
+    padding: 25px;
+}
+
+.image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 222px;
+    height: 228px;
+    background: #171717;
+}
+
+.btn{
+    display: inline-flex;
+    padding: 6px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 2px;
+    background: #397DF6;
+}
+
