@@ -2,12 +2,21 @@ import React from "react";
 import { useUserQuery } from "@/services/authApi/authApi";
 import s from "./profilePage.module.scss";
 import Link from "next/link";
+import {CreatePost} from "@/components/post/createPost/CreatePost";
+import {useFile} from "@/hooks/fileContext/FileContext";
 
 const ProfilePage = () => {
+
   const { data: user, isSuccess } = useUserQuery();
+
+  const [fileState,setFileState] = useFile()
+
+  const showPopUp = fileState.showPopUpForPost;
+
 
   return (
     <div>
+      {showPopUp && <CreatePost/>}
       <div className={s.container}>
         <div>
           <img src={""} className={s.profileImg} />
@@ -16,7 +25,7 @@ const ProfilePage = () => {
           <div className={s.userName}>
             {isSuccess ? user.userName : "User"}
           </div>
-          <button  className={s.profileSettingsButton}><Link href={'/profile-settings'}>Profile Settings</Link></button>
+          <button className={s.profileSettingsButton}><Link href={'/profile-settings'}>Profile Settings</Link></button>
           <div className={s.subscriptions}>
             <p><strong>2 218</strong><br />Subscriptions</p>
             <p><strong>2 358</strong><br />Subscribers</p>

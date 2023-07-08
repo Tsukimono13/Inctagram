@@ -9,6 +9,7 @@ import search from "public/icons/search.svg"
 import bookmark from "public/icons/bookmark.svg"
 import logout from "public/icons/log-out.svg"
 import Link from "next/link";
+import {useFile} from "@/hooks/fileContext/FileContext";
 
 type MenuType = {
   icon: string,
@@ -28,13 +29,21 @@ const menu: MenuType[] = [
   ]
 
 const Sidebar = () => {
+
+  const [fileState,setFileState] = useFile()
+
+  const handlerForCreatePost = () => {
+   return  setFileState(state => ({showPopUpForPost:true}))
+  }
+
+
   return (
     <div className={s.sidebar}>
       <ul className={s.wrapper}>
         {menu.map((m, index) =>
           <li key={index} className={s.iconContainer}>
             <Image src={m.icon} alt={m.alt}/>
-            <Link href={m.href}><h2 className={s.menuTitle}>{m.title}</h2></Link>
+            <Link href={m.href} onClick={m.icon === add && handlerForCreatePost }><h2 className={s.menuTitle}>{m.title}</h2></Link>
           </li>)
         }
       </ul>
