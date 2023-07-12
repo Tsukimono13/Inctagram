@@ -1,0 +1,58 @@
+.modalForNotification{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+
+.containerForTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 24px;
+    width: 100%;
+    border: 1px solid #4C4C4C;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 200px;
+    min-width: 100px;
+    border-radius: 2px;
+    background-color: #333;
+    border: 1px solid #4C4C4C;
+}
+
+.btn{
+    display: inline-flex;
+    padding: 6px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 2px;
+    background: #397DF6;
+    font-family: inherit;
+}
+
+.description{
+    text-align: center;
+    padding: 10px;
+}
+
+.containerForBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    gap: 55px;
+}
