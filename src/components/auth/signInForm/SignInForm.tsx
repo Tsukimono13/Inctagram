@@ -92,7 +92,8 @@ export const SignInForm: React.FC = () => {
                             id="email"
                             type="email"
                             register={register}
-                            errors={errors.email} />
+                            errors={errors.email}
+                        />
                         <CustomInput
                             label="Password"
                             id="password"
