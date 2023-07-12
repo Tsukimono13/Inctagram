@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-interface FileState {
+export interface FileState {
     originalFile: File | null;
     cropFile: File | null;
     filterFile: File | null;
@@ -8,6 +8,7 @@ interface FileState {
     urlCropFile:string;
     urlFilterFile:string
     showPopUpForPost:boolean
+    showNotificationForPost:boolean
 }
 
 
@@ -18,7 +19,8 @@ const initialFileState: FileState = {
     urlOriginalFile:'',
     urlCropFile:'',
     urlFilterFile:'',
-    showPopUpForPost:false
+    showPopUpForPost:false,
+    showNotificationForPost:false
 };
 
 const FileContext = createContext<[FileState, React.Dispatch<React.SetStateAction<FileState>>] | undefined>(undefined);
