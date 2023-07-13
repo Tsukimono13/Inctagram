@@ -7,7 +7,7 @@ import closeIcon from "../../../../public/icons/close.png";
 export const Notification = () => {
 
 
-    const [fileState,setFileState] = useFile()
+    const [_,setFileState] = useFile()
 
     const handlerForCloseAndNo = (event: React.MouseEvent) => {
         event.stopPropagation();

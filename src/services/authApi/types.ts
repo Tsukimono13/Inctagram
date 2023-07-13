@@ -19,7 +19,7 @@ export type LoginResponseType = {
 }
 
 export type RegistrationConfirmation = {
-    confirmationCode: string[]
+    confirmationCode: string | string[]
 }
 
 

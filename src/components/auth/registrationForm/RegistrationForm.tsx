@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import {useRouter} from "next/router";
-import {LoginType, RegistrationType, useRegistrationMutation, useSignInMutation} from "@/services/authApi/authApi";
+import {useRegistrationMutation} from "@/services/authApi/authApi";
 import Link from "next/link";
 import {useAppSelector} from "@/hooks/useAppSelector";
 import {signedUp} from "@/features/authReducer/authSelectors";
@@ -18,6 +18,7 @@ import Image from "next/image";
 import GoodleIcon from "public/icons/Google.svg"
 import GithubIcon from "public/icons/Github.svg"
 import styled from "styled-components";
+import {RegistrationType} from "@/services/authApi/types";
 
 
 type FormPropsType = {

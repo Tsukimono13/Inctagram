@@ -3,10 +3,10 @@ import {FC, useEffect, useState} from "react";
 import Cropper, {Area} from "react-easy-crop";
 import {getImageDimensions} from "@/assets/utils/getImage/getImageDimension";
 import getCroppedImg from "@/assets/utils/cropImage/cropImage";
-import {CropPhoto} from "@/components/post/Cropping/CropPhoto";
 import {HeaderForPost} from "@/components/post/headerForPost/HeaderForPost";
 import {useFile} from "@/hooks/fileContext/FileContext";
 import {FlagType} from "@/components/post/createPost/CreatePost";
+import {CropPhoto} from "@/components/post/cropping/CropPhoto";
 
 type PropsType = {
     setFlag: (flag: FlagType) => void
@@ -78,7 +78,7 @@ export const CropEasy: FC<PropsType> = ({ setFlag }) => {
     }
 
     useEffect(() => {
-        getImageDimensions(fileState.originalFile).then(res => {
+        getImageDimensions(fileState.originalFile as File).then(res => {
             setOriginalSize({ width: res.width, height: res.height })
             setCurrentSize({ width: res.width, height: res.height })
         })

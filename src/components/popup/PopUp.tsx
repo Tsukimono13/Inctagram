@@ -18,7 +18,7 @@ export const PopUp:NextPage<PropsWithChildren> = ({children}) => {
                 {children}
             </div>
             {
-                fileState.showNotificationForPost ? <Notification/> : ''
+                fileState.showNotificationForPost && <Notification/>
             }
         </div>
     );

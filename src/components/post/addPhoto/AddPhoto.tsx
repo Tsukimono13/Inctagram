@@ -14,10 +14,10 @@ type AddPhotoType = {
 
 export const AddPhoto:FC<AddPhotoType> = ({setFlag}) => {
 
-    const [fileState,setFileState] = useFile()
+    const [_,setFileState] = useFile()
 
     const handlerForClose = () => {
-        setFileState(state => ({showPopUpForPost:false}))
+        setFileState(state => ({...state,showPopUpForPost:false}))
     };
 
     const onChangeHandlerForFiles = (e:ChangeEvent<HTMLInputElement>) => {

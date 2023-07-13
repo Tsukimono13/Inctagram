@@ -13,14 +13,23 @@ const RegistrationConfirmation = () => {
 
     const {code} = router.query
 
-    const [registrationConfirmation,{loading,error}] = useRegistrationConfirmationMutation()
+    const [registrationConfirmation,{error}] = useRegistrationConfirmationMutation()
+
+
+
 
     useEffect(() => {
-        if (code) {
-            registrationConfirmation({confirmationCode: code})
-        }
+        const checkCodeAndRedirect = async () => {
+            if (code) {
+                await registrationConfirmation({confirmationCode: code});
+            }
 
-        if(error) return router.push('/404')
+            if (error) {
+                await router.push('/404');
+            }
+        };
+
+        checkCodeAndRedirect();
 
     }, [])
 
@@ -42,9 +51,6 @@ const RegistrationConfirmation = () => {
 
     )
 }
-
-const DatePicker = (props: any) =>   <input type={"date"} {...props}/>
-
 
 RegistrationConfirmation.getLayout = getLayout
 

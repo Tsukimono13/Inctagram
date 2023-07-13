@@ -2,11 +2,11 @@ import React, {ChangeEvent, FC, useState} from 'react';
 import style from './publish.module.css'
 import Image from "next/image";
 import {HeaderForPost} from "@/components/post/headerForPost/HeaderForPost";
-import {FlagType} from "@/components/profile/ProfilePage";
 import defaultImage from '../../../../public/icons/defaultImage.svg'
 import {useUserQuery} from "@/services/authApi/authApi";
 import {useAddPostMutation, useAddPostPhotoMutation} from "@/services/postsApi/postApi";
 import {useFile} from "@/hooks/fileContext/FileContext";
+import {FlagType} from "@/components/post/createPost/CreatePost";
 
 
 type PropsType = {
@@ -31,12 +31,11 @@ export const Publish:FC<PropsType> = ({setFlag}) => {
 
     const handlerForPublish = async () => {
         const formData = new FormData()
-        formData.append('file', fileState.filterFile)
+        formData.append('file', fileState.filterFile as File)
 
         const res = await addPostPhoto(formData).unwrap()
-        console.log(res.images)
         await addPost({ description, childrenMetadata: [{ uploadId: res.images[0].uploadId }] })
-        await setFileState(state => ({...state,showPopUpForPost:false}))
+        setFileState(state => ({...state,showPopUpForPost:false}))
         setFlag('load')
     }
 
@@ -58,7 +57,7 @@ export const Publish:FC<PropsType> = ({setFlag}) => {
                 <div className={style.description}>
                     <div className={style.userInfo}>
                         <Image
-                            src={defaultImage || user.avatar}
+                            src={defaultImage}
                             alt={'avatar'}
                             width={30}
                             height={30}

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import s from "@/components/profile/profilePage.module.scss";
 import {AddPhoto} from "@/components/post/addPhoto/AddPhoto";
-import {CropEasy} from "@/components/post/cropping/CropEasy";
 import {AddFilters} from "@/components/post/addFilter/addFilter";
 import {Publish} from "@/components/post/publish/Publish";
 import {PopUp} from "@/components/popup/PopUp";
-import {FlagType} from "@/components/profile/ProfilePage";
+import {CropEasy} from "@/components/post/cropping/CropEasy";
+
 
 
 

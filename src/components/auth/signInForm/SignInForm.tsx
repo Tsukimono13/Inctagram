@@ -6,13 +6,13 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import {useRouter} from "next/router";
-import {LoginType, useSignInMutation} from "@/services/authApi/authApi";
+import {useSignInMutation} from "@/services/authApi/authApi";
 import Link from "next/link";
 import Image from "next/image";
 import GoogleIcon from "public/icons/Google.svg"
 import GithubIcon from "public/icons/Github.svg"
 import CustomInput from "@/components/customComponents/customInput/CustomInput";
-import CustomButton from "@/components/customComponents/customButton/CustomButton";
+import {LoginType} from "@/services/authApi/types";
 
 
 

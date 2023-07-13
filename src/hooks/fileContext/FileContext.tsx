@@ -23,9 +23,14 @@ const initialFileState: FileState = {
     showNotificationForPost:false
 };
 
+interface FileProviderProps {
+    children: React.ReactNode;
+}
+
+
 const FileContext = createContext<[FileState, React.Dispatch<React.SetStateAction<FileState>>] | undefined>(undefined);
 
-export const FileProvider: React.FC = ({ children }) => {
+export const FileProvider: React.FC<FileProviderProps> = ({ children }) => {
     const state = useState<FileState>(initialFileState);
     return <FileContext.Provider value={state}>{children}</FileContext.Provider>;
 };

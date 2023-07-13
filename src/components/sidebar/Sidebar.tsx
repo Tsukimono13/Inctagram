@@ -30,11 +30,18 @@ const menu: MenuType[] = [
 
 const Sidebar = () => {
 
-  const [fileState,setFileState] = useFile()
+  const [_,setFileState] = useFile()
 
   const handlerForCreatePost = () => {
-   return  setFileState(state => ({showPopUpForPost:true}))
+   return  setFileState(state => ({...state,showPopUpForPost:true}))
   }
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, icon: string) => {
+    if (icon === add) {
+      e.preventDefault();
+      handlerForCreatePost();
+    }
+  };
 
 
   return (
@@ -43,7 +50,7 @@ const Sidebar = () => {
         {menu.map((m, index) =>
           <li key={index} className={s.iconContainer}>
             <Image src={m.icon} alt={m.alt}/>
-            <Link href={m.href} onClick={m.icon === add && handlerForCreatePost }><h2 className={s.menuTitle}>{m.title}</h2></Link>
+            <Link href={m.href} onClick={(e) => handleClick(e,m.icon)}><h2 className={s.menuTitle}>{m.title}</h2></Link>
           </li>)
         }
       </ul>

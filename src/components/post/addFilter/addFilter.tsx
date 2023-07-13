@@ -23,7 +23,7 @@ export const AddFilters: NextPage<PropsType & PropsWithChildren> = ({ setFlag })
     const [filter, setFilter] = useState('none')
 
     const handleImageSubmit = async () => {
-        const res = await setImageFilter(fileState.cropFile, filter)
+        const res = await setImageFilter(fileState.cropFile as File, filter)
         if (res) {
             setFileState(state => ({...state,filterFile:res.file as File}))
             setFileState(state => ({...state,urlFilterFile:res.url}))

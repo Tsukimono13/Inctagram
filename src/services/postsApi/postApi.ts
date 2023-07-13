@@ -6,6 +6,10 @@ export type AddPostPhotoResponseType = {
     images: ImagesType[]
 }
 
+type ChildrenMetadata = {
+    uploadId: string
+}
+
 export type PostType = {
     description: string
     childrenMetadata: ChildrenMetadata[]

@@ -1,5 +1,5 @@
 import s from "./cropPhoto.module.css";
-import {SizeType} from "@/components/post/Cropping/CropEasy";
+import {SizeType} from "@/components/post/cropping/CropEasy";
 import {FC} from "react";
 import expand from '../../../../public/icons/expand-outline.png'
 import maximize from '../../../../public/icons/maximize-outline.png'
