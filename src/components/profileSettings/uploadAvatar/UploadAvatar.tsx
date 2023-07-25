@@ -10,7 +10,7 @@ const UploadAvatar = () => {
 
   const [showAddAvatarModalWindow, setShowAddAvatarModalWindow] = useState(false)
 
-  const {data} = useGetProfileQuery()
+  const {data} = useGetProfileQuery(null)
   const avatar = data?.avatars[0].url? data?.avatars[0].url:null
 
   const showModal = (value:boolean)=>{

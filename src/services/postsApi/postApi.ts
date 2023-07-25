@@ -24,6 +24,14 @@ export type FetchPostResponseType = {
     updatedAt: string
 }
 
+export type ResponseType<T> = {
+    totalCount: number
+    pagesCount: number
+    page: number
+    pageSize: number
+    items: T
+}
+
 type ImagesType = {
     url: string
     width: number
@@ -51,6 +59,23 @@ export const postApi = createApi({
         }
     ),
     endpoints:builder =>  ({
+        fetchPosts: builder.query<ResponseType<FetchPostResponseType[]>,{userId:number,pageNumber:number}>({
+        query:({userId,pageNumber}) => `posts/${userId}?pageNumber=${pageNumber}&pageSize=12`,
+            serializeQueryArgs: ({ endpointName}) => {
+                return endpointName
+            },
+            merge: (currentCache, newItems) => {
+
+                if (currentCache.page !== newItems.page) {
+                    currentCache.page = newItems.page
+                    currentCache.items.push(...newItems.items)
+                }
+
+            },
+            forceRefetch({ currentArg, previousArg}) {
+                return !(previousArg?.pageNumber === currentArg?.pageNumber)
+            },
+   }),
         addPostPhoto: builder.mutation<AddPostPhotoResponseType, FormData>({
             query: body => ({
                 url: 'posts/image',
@@ -69,4 +94,4 @@ export const postApi = createApi({
 })
 
 
-export const {useAddPostPhotoMutation, useAddPostMutation,} = postApi
+export const {useAddPostPhotoMutation, useAddPostMutation,useFetchPostsQuery} = postApi

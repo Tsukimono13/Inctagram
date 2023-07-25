@@ -13,7 +13,7 @@ import UploadAvatar from "@/components/profileSettings/uploadAvatar/UploadAvatar
 
 export const GeneralInformation = () => {
 
-    const {data: userName, isLoading, isFetching, isError, error} = useGetProfileQuery()
+    const {data: userName, isLoading, isFetching, isError, error} = useGetProfileQuery(null)
     const [updateProfile] = useUpdateProfileMutation()
 
 

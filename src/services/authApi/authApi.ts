@@ -82,7 +82,7 @@ export const authApi = createApi({
                 method:'GET'
             })
         }),
-        getProfile:builder.query<UserProfileType,void>({
+        getProfile:builder.query<UserProfileType,null>({
             query:()=>({
                 url:'users/profile',
             }),
