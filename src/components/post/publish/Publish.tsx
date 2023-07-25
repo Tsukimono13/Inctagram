@@ -7,6 +7,7 @@ import {useUserQuery} from "@/services/authApi/authApi";
 import {useAddPostMutation, useAddPostPhotoMutation} from "@/services/postsApi/postApi";
 import {useFile} from "@/hooks/fileContext/FileContext";
 import {FlagType} from "@/components/post/createPost/CreatePost";
+import {useRouter} from "next/navigation";
 
 
 type PropsType = {
@@ -28,6 +29,7 @@ export const Publish:FC<PropsType> = ({setFlag}) => {
 
     const publishImgUrl = fileState.urlFilterFile
 
+    const router = useRouter()
 
     const handlerForPublish = async () => {
         const formData = new FormData()
@@ -36,6 +38,7 @@ export const Publish:FC<PropsType> = ({setFlag}) => {
         const res = await addPostPhoto(formData).unwrap()
         await addPost({ description, childrenMetadata: [{ uploadId: res.images[0].uploadId }] })
         setFileState(state => ({...state,showPopUpForPost:false}))
+        router.refresh()
         setFlag('load')
     }
 
