@@ -1,21 +1,24 @@
 import React from "react";
-import { useUserQuery } from "@/services/authApi/authApi";
+import {useGetProfileQuery, useUserQuery} from "@/services/authApi/authApi";
 import s from "./profilePage.module.scss";
 import Link from "next/link";
 import {CreatePost} from "@/components/post/createPost/CreatePost";
 import {useFile} from "@/hooks/fileContext/FileContext";
+import {Posts} from "@/components/profile/posts/Posts";
 
 const ProfilePage = () => {
 
-  const { data: user, isSuccess } = useUserQuery();
-
-  const [fileState,setFileState] = useFile()
+  const [fileState,_] = useFile()
 
   const showPopUp = fileState.showPopUpForPost;
 
+  const { data: user, isSuccess } = useUserQuery();
+
+  const { data} = useGetProfileQuery(null)
+
 
   return (
-    <div>
+    <>
       {showPopUp && <CreatePost/>}
       <div className={s.container}>
         <div>
@@ -36,15 +39,8 @@ const ProfilePage = () => {
             laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
       </div>
-      <div className={s.contentWrapper}>
-        <img src={""} className={s.contentImg} />
-        <img src={""} className={s.contentImg} />
-        <img src={""} className={s.contentImg} />
-        <img src={""} className={s.contentImg} />
-        <img src={""} className={s.contentImg} />
-        <img src={""} className={s.contentImg} />
-      </div>
-    </div>
+        <Posts profileId={data?.id || 0}/>
+    </>
   );
 };
 
